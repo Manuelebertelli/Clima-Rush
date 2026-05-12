@@ -93,14 +93,42 @@ Manuele Bertelli</textarea>
     <button class="btn" onclick="resetEmail()">↩️ Ripristina</button>
   </div>
 
-  <h2>2) Backup Google Sheet</h2>
-  <p class="mut mini">Incolla qui l’URL della Web App Apps Script.</p>
-  <input id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXX/exec" />
+  <h2>☁️ Configurazione Cloud</h2>
+
+<div class="supplier">
+
+  <h3>Google Sheet Backup</h3>
+
+  <p class="mut mini">
+    Incolla qui il link Apps Script della tua Web App Google.
+  </p>
+
+  <input 
+    id="scriptUrl"
+    placeholder="https://script.google.com/macros/s/XXXXX/exec"
+  />
+
   <div class="toolbar">
-    <button class="btn green" onclick="saveConfig()">💾 Salva URL Sheet</button>
-    <button class="btn blue" onclick="testSheet()">🧪 Test collegamento</button>
+
+    <button class="btn green" onclick="saveConfig()">
+      💾 Salva configurazione
+    </button>
+
+    <button class="btn blue" onclick="testSheet()">
+      🧪 Test collegamento
+    </button>
+
+    <button class="btn" onclick="clearConfig()">
+      🗑️ Reset
+    </button>
+
   </div>
-</section>
+
+  <div class="note">
+    Il link viene salvato direttamente nel browser/iPhone tramite localStorage.
+  </div>
+
+</div>
 
 <section class="card">
   <h2>3) Contatti fornitori</h2>
