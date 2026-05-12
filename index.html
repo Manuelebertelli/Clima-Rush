@@ -1,260 +1,88 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clima Rush - Richiesta Preventivi</title>
-
-  <style>
-    :root{
-      --bg:#07101d;
-      --panel:#111b2d;
-      --panel2:#17233a;
-      --txt:#f8fafc;
-      --mut:#9aa7bd;
-      --line:#ffffff1c;
-      --gold:#d7b56d;
-      --green:#39d98a;
-      --blue:#7dd3fc;
-      --shadow:0 18px 60px rgba(0,0,0,.35);
-      --radius:22px;
-    }
-
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      background:radial-gradient(circle at top left,#16223a 0,#07101d 42%,#030712 100%);
-      color:var(--txt);
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:5;
-      background:rgba(7,16,29,.86);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid var(--line);
-    }
-
-    .wrap{max-width:1220px;margin:auto;padding:18px}
-
-    .top{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-
-    h1{margin:0;font-size:26px}
-    h2{margin-top:0}
-
-    .sub{color:var(--mut);font-size:14px;margin-top:4px}
-
-    .pill{
-      border:1px solid var(--line);
-      background:#ffffff10;
-      border-radius:999px;
-      padding:8px 12px;
-      color:var(--mut);
-      font-size:13px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1.25fr;
-      gap:18px;
-      align-items:start;
-    }
-
-    .card,.supplier{
-      background:linear-gradient(180deg,var(--panel),#0d1627);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
-
-    .supplier{
-      background:linear-gradient(180deg,var(--panel2),#101a2b);
-      margin-bottom:12px;
-    }
-
-    .mut,.mini{color:var(--mut)}
-    .mini{font-size:12px}
-
-    textarea,input,select{
-      width:100%;
-      background:#081224;
-      color:var(--txt);
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      font:inherit;
-      outline:none;
-    }
-
-    textarea{
-      min-height:330px;
-      resize:vertical;
-      line-height:1.45;
-    }
-
-    .btn{
-      border:0;
-      border-radius:14px;
-      padding:11px 13px;
-      font-weight:800;
-      cursor:pointer;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      justify-content:center;
-      background:#22304b;
-      color:var(--txt);
-      border:1px solid var(--line);
-    }
-
-    .btn.gold{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827}
-    .btn.green{background:#123927;color:#c6f6d5}
-    .btn.blue{background:#103345;color:#d8f3ff}
-
-    .toolbar,.actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin:12px 0;
-    }
-
-    .supplier-head{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:flex-start;
-    }
-
-    .supplier h3{margin:0 0 4px;font-size:17px}
-
-    .badge{
-      font-size:12px;
-      border-radius:999px;
-      padding:5px 9px;
-      border:1px solid var(--line);
-      white-space:nowrap;
-    }
-
-    .ok{background:#0f3b29;color:#9ff2c4}
-    .warn{background:#4a3512;color:#ffe6a8}
-
-    .details{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px;
-      margin:11px 0;
-      color:var(--mut);
-      font-size:13px;
-    }
-
-    .quote-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px;
-      margin:12px 0;
-    }
-
-    .quote-grid .full{grid-column:1 / -1}
-
-    .searchbox{
-      display:grid;
-      grid-template-columns:1fr 170px;
-      gap:10px;
-      margin-bottom:12px;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:18px;
-      transform:translateX(-50%);
-      background:#111827;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      padding:12px 16px;
-      border-radius:999px;
-      display:none;
-      z-index:9;
-    }
-
-    .toast.show{display:block}
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:13px;
-    }
-
-    th,td{
-      padding:8px;
-      border-bottom:1px solid var(--line);
-      text-align:left;
-      vertical-align:top;
-    }
-
-    th{color:var(--gold)}
-
-    .table-wrap{
-      overflow:auto;
-      border:1px solid var(--line);
-      border-radius:16px;
-    }
-
-    footer{
-      padding:28px;
-      text-align:center;
-      color:var(--mut);
-      font-size:12px;
-    }
-
-    @media(max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .searchbox,.details,.quote-grid{grid-template-columns:1fr}
-      .wrap{padding:14px}
-      header{position:relative}
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Clima Rush v1.3</title>
+<style>
+:root{--bg:#07101d;--card:#111b2d;--card2:#17233a;--txt:#f8fafc;--mut:#9aa7bd;--line:#ffffff1c;--gold:#d7b56d;--green:#39d98a;--blue:#7dd3fc;--red:#ff6b8a;--r:22px;--shadow:0 18px 60px #0008}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,#16223a,#07101d 45%,#030712);color:var(--txt)}
+header{position:sticky;top:0;z-index:10;background:#07101ddd;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1250px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{margin:0;font-size:26px}h2{margin:0 0 12px}.mut,.mini{color:var(--mut)}.mini{font-size:12px}.pill{border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:var(--mut);background:#fff1}
+.tabs{display:flex;gap:8px;overflow:auto;padding:10px 0}.tab{border:1px solid var(--line);background:#ffffff10;color:var(--txt);padding:10px 12px;border-radius:999px;white-space:nowrap;cursor:pointer}.tab.active{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827;font-weight:800}
+.section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 12;background:linear-gradient(180deg,var(--card),#0d1627);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px}.half{grid-column:span 6}.third{grid-column:span 4}.two{grid-column:span 8}
+input,textarea,select{width:100%;background:#081224;color:var(--txt);border:1px solid var(--line);border-radius:14px;padding:11px;font:inherit}textarea{min-height:280px;resize:vertical;line-height:1.45}
+.btn{border:1px solid var(--line);background:#22304b;color:var(--txt);border-radius:14px;padding:10px 12px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;gap:7px;align-items:center;justify-content:center}.btn.gold{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827}.btn.green{background:#123927;color:#c6f6d5}.btn.blue{background:#103345;color:#d8f3ff}.btn.red{background:#421827;color:#ffd6df}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.supplier{background:linear-gradient(180deg,var(--card2),#101a2b);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px}.supplier h3{margin:0 0 4px}.head{display:flex;justify-content:space-between;gap:10px}.badge{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;white-space:nowrap}.ok{background:#0f3b29;color:#9ff2c4}.warn{background:#4a3512;color:#ffe6a8}
+.kpi{background:#fff1;border:1px solid var(--line);border-radius:18px;padding:14px}.kpi b{display:block;color:var(--gold);font-size:24px;margin-top:4px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--gold)}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
+.timeline{border-left:2px solid var(--gold);padding-left:14px}.event{margin:0 0 14px;background:#fff1;border:1px solid var(--line);border-radius:14px;padding:12px}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#111827;border:1px solid var(--line);box-shadow:var(--shadow);padding:12px 16px;border-radius:999px;display:none;z-index:99}.toast.show{display:block}
+@media(max-width:900px){.half,.third,.two{grid-column:span 12}.formgrid{grid-template-columns:1fr}header{position:relative}.wrap{padding:12px}}
+</style>
 </head>
-
 <body>
 
 <header>
-  <div class="wrap top">
-    <div>
-      <h1>❄️ Clima Rush</h1>
-      <div class="sub">Richiesta preventivi climatizzazione • Muscoline e dintorni</div>
-    </div>
-    <div class="pill">v1.2 • CRM preventivi + Google Sheet</div>
+<div class="wrap">
+  <div class="top">
+    <div><h1>❄️ Clima Rush</h1><div class="mut">CRM preventivi climatizzazione • Muscoline</div></div>
+    <div class="pill">v1.3 • sezioni stile app</div>
   </div>
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('dashboard',this)">🏠 Dashboard</button>
+    <button class="tab" onclick="showTab('fornitori',this)">📇 Fornitori</button>
+    <button class="tab" onclick="showTab('preventivi',this)">📝 Preventivi</button>
+    <button class="tab" onclick="showTab('comparatore',this)">📊 Comparatore</button>
+    <button class="tab" onclick="showTab('timeline',this)">📅 Timeline</button>
+    <button class="tab" onclick="showTab('cloud',this)">☁️ Cloud</button>
+    <button class="tab" onclick="showTab('impostazioni',this)">⚙️ Impostazioni</button>
+  </div>
+</div>
 </header>
 
-<main class="wrap grid">
+<main class="wrap">
 
-<section class="card">
-  <h2>1) Testo email standard</h2>
+<section id="dashboard" class="section active">
+<div class="grid">
+  <div class="card third kpi"><span class="mini">Fornitori</span><b id="kFornitori">0</b></div>
+  <div class="card third kpi"><span class="mini">Preventivi salvati</span><b id="kPreventivi">0</b></div>
+  <div class="card third kpi"><span class="mini">Miglior prezzo</span><b id="kPrezzo">-</b></div>
+  <div class="card half">
+    <h2>🎯 Prossimi passi</h2>
+    <div id="nextSteps" class="timeline"></div>
+  </div>
+  <div class="card half">
+    <h2>🏆 Migliori preventivi</h2>
+    <div id="dashBest"></div>
+  </div>
+</div>
+</section>
 
-  <label class="mini">Oggetto</label>
-  <input id="subject" value="Richiesta preventivo impianto di raffrescamento – nuova abitazione a Muscoline" />
-
-  <br><br>
-
-  <label class="mini">Corpo email</label>
-  <textarea id="emailBody">Buongiorno,
+<section id="fornitori" class="section">
+<div class="grid">
+  <div class="card two">
+    <h2>📇 Lista fornitori</h2>
+    <div class="formgrid">
+      <input id="q" placeholder="Cerca per nome, paese, email..." oninput="renderSuppliers()">
+      <select id="filter" onchange="renderSuppliers()">
+        <option value="all">Tutti</option><option value="email">Solo con email</option><option value="high">Contatto più affidabile</option>
+      </select>
+    </div>
+    <div id="supplierList" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+    <h2>✉️ Email standard</h2>
+    <label class="mini">Oggetto</label>
+    <input id="subject" value="Richiesta preventivo impianto di raffrescamento – nuova abitazione a Muscoline">
+    <br><br>
+    <label class="mini">Corpo email</label>
+    <textarea id="emailBody">Buongiorno,
 vi contatto perché stiamo ultimando una nuova abitazione a Muscoline (BS) e vorremmo ricevere un preventivo per l’installazione di un impianto di raffrescamento.
 
 L’abitazione è già predisposta con:
-
 - tubazioni in multistrato (andata/ritorno)
 - punti di connessione per unità esterna
 - scarichi condensa
@@ -263,7 +91,6 @@ L’abitazione è già predisposta con:
   - n.3 zona notte (camere)
 
 L’idea sarebbe quella di installare:
-
 - 1 split nella zona giorno openspace
 - 1 split per ciascuna camera nella zona notte
 
@@ -275,409 +102,161 @@ Se necessario possiamo accordarci anche per un sopralluogo.
 
 Grazie mille,
 Manuele Bertelli</textarea>
-
-  <div class="toolbar">
-    <button class="btn gold" onclick="copyEmail()">📋 Copia email</button>
-    <button class="btn blue" onclick="downloadCsv()">⬇️ Scarica CSV contatti</button>
-    <button class="btn" onclick="resetEmail()">↩️ Ripristina testo</button>
+    <div class="row"><button class="btn gold" onclick="copyEmail()">📋 Copia email</button><button class="btn blue" onclick="downloadCsv()">⬇️ CSV contatti</button></div>
   </div>
-
-  <hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
-
-  <h2>☁️ Configurazione Cloud</h2>
-
-  <p class="mut mini">
-    Incolla qui l’URL della Web App Apps Script collegata al tuo Google Sheet.
-  </p>
-
-  <input id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXX/exec" />
-
-  <div class="toolbar">
-    <button class="btn green" onclick="saveConfig()">💾 Salva URL Sheet</button>
-    <button class="btn blue" onclick="testSheet()">🧪 Test collegamento</button>
-    <button class="btn" onclick="clearConfig()">🗑️ Reset URL</button>
-  </div>
-
-  <p class="mini">
-    L’URL viene salvato nel browser/iPhone tramite localStorage. Quindi lo inserisci una volta e poi basta.
-  </p>
+</div>
 </section>
 
-<section class="card">
-  <h2>2) Contatti fornitori</h2>
+<section id="preventivi" class="section">
+<div class="card">
+  <h2>📝 Gestione preventivi</h2>
+  <p class="mut">Qui inserisci sopralluogo, prezzo, marca, note e ranking. Poi salva nello storico e, se configurato, su Google Sheet.</p>
+  <div id="quotesEditor"></div>
+</div>
+</section>
 
-  <div class="searchbox">
-    <input id="q" placeholder="Cerca per nome, paese, email..." oninput="render()"/>
-    <select id="filter" onchange="render()">
-      <option value="all">Tutti</option>
-      <option value="email">Solo con email</option>
-      <option value="high">Contatto più affidabile</option>
-    </select>
+<section id="comparatore" class="section">
+<div class="card">
+  <h2>📊 Comparatore preventivi</h2>
+  <p class="mut">Ordinamento automatico: ranking più alto, poi prezzo più basso.</p>
+  <div class="row"><button class="btn blue" onclick="renderAll()">🔄 Aggiorna</button><button class="btn red" onclick="clearQuotes()">🗑️ Svuota storico locale</button></div>
+  <div id="comparisonBox"></div>
+</div>
+</section>
+
+<section id="timeline" class="section">
+<div class="card">
+  <h2>📅 Timeline operativa</h2>
+  <div class="timeline" id="timelineBox"></div>
+</div>
+</section>
+
+<section id="cloud" class="section">
+<div class="grid">
+  <div class="card half">
+    <h2>☁️ Google Sheet Backup</h2>
+    <p class="mut mini">Incolla l’URL Apps Script Web App.</p>
+    <input id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXX/exec">
+    <div class="row"><button class="btn green" onclick="saveConfig()">💾 Salva URL</button><button class="btn blue" onclick="testSheet()">🧪 Test</button><button class="btn" onclick="clearConfig()">🗑️ Reset URL</button></div>
   </div>
-
-  <div id="list"></div>
-
-  <div class="card" style="margin-top:18px">
-    <h2>📊 Classifica Preventivi</h2>
-    <p class="mut mini">
-      Classifica automatica: prima ranking più alto, poi prezzo più basso.
-    </p>
-
-    <div class="toolbar">
-      <button class="btn blue" onclick="renderComparison()">🔄 Aggiorna classifica</button>
-      <button class="btn" onclick="clearQuotes()">🗑️ Svuota storico locale</button>
-    </div>
-
-    <div id="comparisonBox"></div>
+  <div class="card half">
+    <h2>💾 Backup locale</h2>
+    <div class="row"><button class="btn blue" onclick="exportJson()">⬇️ Esporta JSON</button><button class="btn" onclick="document.getElementById('importFile').click()">⬆️ Importa JSON</button><input id="importFile" type="file" accept="application/json" style="display:none" onchange="importJson(event)"></div>
   </div>
+</div>
+</section>
+
+<section id="impostazioni" class="section">
+<div class="grid">
+  <div class="card half">
+    <h2>⚙️ Dati progetto</h2>
+    <input id="projectName" placeholder="Nome progetto" value="Casa Muscoline - Climatizzazione">
+    <br><br><input id="homeMq" placeholder="Mq abitazione">
+    <br><br><input id="splitCount" placeholder="Numero split" value="4">
+    <div class="row"><button class="btn green" onclick="saveSettings()">💾 Salva impostazioni</button></div>
+  </div>
+  <div class="card half">
+    <h2>⚠️ Reset</h2>
+    <button class="btn red" onclick="resetAll()">Cancella tutti i dati locali</button>
+  </div>
+</div>
 </section>
 
 </main>
 
-<footer>
-  Clima Rush • storico locale + backup Google Sheet • controlla sempre i dati prima dell’invio definitivo.
-</footer>
-
 <div id="toast" class="toast">OK</div>
 
 <script>
-const defaultEmail = document.getElementById('emailBody').value;
-
-const suppliers = [
-  {name:'Garda Frigor',city:'Bedizzole / zona Garda',email:'info@gardafrigor.it',phone:'030 6874133',site:'https://www.gardafrigor.it',reliability:'Alta'},
-  {name:'Termolombarda',city:'Brescia',email:'info@termolombarda.it',phone:'030 348221',site:'',reliability:'Alta'},
-  {name:'Bonati Clima',city:'Lonato del Garda',email:'info@bonaticlima.it',phone:'030 9913709',site:'',reliability:'Alta'},
-  {name:'Bassini Termoidraulica',city:'Muscoline',email:'info@termoidraulicabassini.it',phone:'',site:'https://termoidraulicabassini.it',reliability:'Alta'},
-  {name:'Zilioli Clima',city:'Gavardo',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Scimeca Clima',city:'Desenzano del Garda',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'TIEMME Impianti',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Tecnoclima',city:'Salò / Garda',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'P.G. Idroclima',city:'Provincia di Brescia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Life Clima',city:'Brescia / hinterland',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'AL Climatizzazione',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Refrigerazioni B.Z.',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Zanini e Maselli',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'S.I. Impianti',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Sesana Idraulica',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Termobiesse',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Tecnoclima di Scalvinoni Luca e Fabio',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'LS Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Mora Cesare Srl',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Italfrigo',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Signorini Romano',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Goldoni Enrico Impianti',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'Facchini Alessandro Thomas',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
-  {name:'C.M. Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'}
+const suppliers=[
+{name:'Garda Frigor',city:'Bedizzole / zona Garda',email:'info@gardafrigor.it',phone:'030 6874133',site:'https://www.gardafrigor.it',reliability:'Alta'},
+{name:'Termolombarda',city:'Brescia',email:'info@termolombarda.it',phone:'030 348221',site:'',reliability:'Alta'},
+{name:'Bonati Clima',city:'Lonato del Garda',email:'info@bonaticlima.it',phone:'030 9913709',site:'',reliability:'Alta'},
+{name:'Bassini Termoidraulica',city:'Muscoline',email:'info@termoidraulicabassini.it',phone:'',site:'https://termoidraulicabassini.it',reliability:'Alta'},
+{name:'Zilioli Clima',city:'Gavardo',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Scimeca Clima',city:'Desenzano del Garda',email:'',phone:'',site:'',reliability:'Media'},
+{name:'TIEMME Impianti',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Tecnoclima',city:'Salò / Garda',email:'',phone:'',site:'',reliability:'Media'},
+{name:'P.G. Idroclima',city:'Provincia di Brescia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Life Clima',city:'Brescia / hinterland',email:'',phone:'',site:'',reliability:'Media'},
+{name:'AL Climatizzazione',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Refrigerazioni B.Z.',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Zanini e Maselli',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'S.I. Impianti',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Sesana Idraulica',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Termobiesse',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Tecnoclima di Scalvinoni Luca e Fabio',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'},
+{name:'LS Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Mora Cesare Srl',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Italfrigo',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Signorini Romano',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Goldoni Enrico Impianti',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Facchini Alessandro Thomas',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},
+{name:'C.M. Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'}
 ];
 
-function enc(s){return encodeURIComponent(s || '')}
-function cleanPhone(p){return (p || '').replace(/[^0-9+]/g,'')}
-function getBody(){return document.getElementById('emailBody').value}
-function getSubject(){return document.getElementById('subject').value}
+function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}
+function enc(s){return encodeURIComponent(s||'')}function cleanPhone(p){return(p||'').replace(/[^0-9+]/g,'')}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
+function getQuotes(){return JSON.parse(localStorage.getItem('clima_quotes')||'[]')}
+function setQuotes(q){localStorage.setItem('clima_quotes',JSON.stringify(q))}
+function getSubject(){return document.getElementById('subject').value}function getBody(){return document.getElementById('emailBody').value}
+function badge(r){return r==='Alta'?'<span class="badge ok">Affidabile</span>':'<span class="badge warn">Da verificare</span>'}
 
-function showToast(text){
-  const el = document.getElementById('toast');
-  el.textContent = text;
-  el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),1800);
+function renderSuppliers(){
+ const q=document.getElementById('q')?.value.toLowerCase().trim()||'';const f=document.getElementById('filter')?.value||'all';const box=document.getElementById('supplierList');box.innerHTML='';
+ suppliers.map((s,i)=>({...s,i})).filter(s=>{const t=(`${s.name} ${s.city} ${s.email} ${s.phone}`).toLowerCase();if(q&&!t.includes(q))return false;if(f==='email'&&!s.email)return false;if(f==='high'&&s.reliability!=='Alta')return false;return true}).forEach(s=>{
+  const gmail=s.email?`https://mail.google.com/mail/?view=cm&fs=1&to=${enc(s.email)}&su=${enc(getSubject())}&body=${enc(getBody())}`:'';
+  const mailto=s.email?`mailto:${s.email}?subject=${enc(getSubject())}&body=${enc(getBody())}`:'';
+  const tel=s.phone?`tel:${cleanPhone(s.phone)}`:'';
+  box.insertAdjacentHTML('beforeend',`<article class="supplier"><div class="head"><div><h3>${s.name}</h3><div class="mut">📍 ${s.city}</div></div>${badge(s.reliability)}</div><p class="mini">📧 ${s.email||'—'} · 📞 ${s.phone||'—'}</p><div class="row">${gmail?`<a class="btn gold" target="_blank" href="${gmail}">Gmail</a>`:''}${mailto?`<a class="btn blue" href="${mailto}">Mail</a>`:''}${tel?`<a class="btn" href="${tel}">Chiama</a>`:''}${s.site?`<a class="btn" target="_blank" href="${s.site}">Sito</a>`:''}<button class="btn green" onclick="jumpQuote(${s.i})">Gestisci preventivo</button></div></article>`);
+ })
 }
 
-function badge(r){
-  return r === 'Alta'
-    ? '<span class="badge ok">Contatto più affidabile</span>'
-    : '<span class="badge warn">Da verificare</span>';
+function renderQuotesEditor(){
+ const box=document.getElementById('quotesEditor');box.innerHTML='';
+ suppliers.forEach((s,i)=>{
+  const saved=getQuotes().find(q=>q.nome===s.name)||{};
+  box.insertAdjacentHTML('beforeend',`<article class="supplier"><div class="head"><div><h3>${s.name}</h3><div class="mut">${s.city}</div></div>${badge(s.reliability)}</div><div class="formgrid" id="quote-card-${i}"><select id="stato-${i}"><option>Da contattare</option><option>Mail inviata</option><option>Risposto</option><option>Sopralluogo fissato</option><option>Preventivo ricevuto</option><option>Scartato</option><option>Selezionato</option></select><input id="sopralluogo-${i}" type="date" value="${saved.data_sopralluogo||''}"><input id="prezzo-${i}" type="number" placeholder="Costo preventivo" value="${saved.costo_preventivo||''}"><input id="marca-${i}" placeholder="Marca proposta" value="${saved.marca_proposta||''}"><select id="ranking-${i}"><option value="">Ranking</option><option value="5">⭐⭐⭐⭐⭐ Ottimo</option><option value="4">⭐⭐⭐⭐ Buono</option><option value="3">⭐⭐⭐ Medio</option><option value="2">⭐⭐ Scarso</option><option value="1">⭐ Bocciato</option></select><input class="full" id="note-${i}" placeholder="Note tecniche / garanzia / condizioni" value="${saved.note||''}"></div><div class="row"><button class="btn green" onclick="saveQuote(${i})">☁️ Salva preventivo</button></div></article>`);
+  if(saved.stato)document.getElementById(`stato-${i}`).value=saved.stato;if(saved.ranking)document.getElementById(`ranking-${i}`).value=saved.ranking;
+ })
 }
 
-function copyEmail(){
-  navigator.clipboard.writeText(getBody());
-  showToast('Email copiata ✅');
+function saveQuote(i){
+ const s=suppliers[i];const payload={nome:s.name,citta:s.city,email:s.email,telefono:s.phone,sito:s.site,affidabilita:s.reliability,stato:document.getElementById(`stato-${i}`).value,data_sopralluogo:document.getElementById(`sopralluogo-${i}`).value,costo_preventivo:document.getElementById(`prezzo-${i}`).value,marca_proposta:document.getElementById(`marca-${i}`).value,note:document.getElementById(`note-${i}`).value,ranking:document.getElementById(`ranking-${i}`).value,timestamp:new Date().toISOString()};
+ const arr=getQuotes();const idx=arr.findIndex(q=>q.nome===payload.nome);idx>=0?arr[idx]=payload:arr.push(payload);setQuotes(arr);sendToSheet(payload);renderAll();toast('Preventivo salvato ✅')
 }
-
-function resetEmail(){
-  document.getElementById('emailBody').value = defaultEmail;
-  showToast('Testo ripristinato ✅');
-}
-
-function saveConfig(){
-  const url = document.getElementById('scriptUrl').value.trim();
-  localStorage.setItem('clima_script_url', url);
-  showToast('URL Google Sheet salvato ✅');
-}
-
-function loadConfig(){
-  document.getElementById('scriptUrl').value = localStorage.getItem('clima_script_url') || '';
-}
-
-function clearConfig(){
-  localStorage.removeItem('clima_script_url');
-  document.getElementById('scriptUrl').value = '';
-  showToast('Configurazione rimossa ✅');
-}
-
-async function sendToSheet(payload){
-  const url = localStorage.getItem('clima_script_url');
-
-  if(!url){
-    alert('Prima inserisci e salva URL Apps Script.');
-    return;
-  }
-
-  try{
-    await fetch(url,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify(payload)
-    });
-
-    showToast('Backup inviato a Google Sheet ✅');
-  }catch(err){
-    console.error(err);
-    showToast('Errore backup ❌');
-  }
-}
-
-function testSheet(){
-  sendToSheet({
-    nome:'TEST CLIMA RUSH',
-    citta:'Muscoline',
-    email:'',
-    telefono:'',
-    sito:'',
-    affidabilita:'Test',
-    stato:'Test collegamento',
-    data_sopralluogo:'',
-    costo_preventivo:'',
-    marca_proposta:'',
-    note:'Riga di test generata da Clima Rush',
-    ranking:'',
-    timestamp:new Date().toISOString()
-  });
-}
-
-function getQuotes(){
-  return JSON.parse(localStorage.getItem('clima_quotes') || '[]');
-}
-
-function saveLocalQuote(payload){
-  const quotes = getQuotes();
-  const existingIndex = quotes.findIndex(q => q.nome === payload.nome);
-
-  if(existingIndex >= 0){
-    quotes[existingIndex] = payload;
-  } else {
-    quotes.push(payload);
-  }
-
-  localStorage.setItem('clima_quotes', JSON.stringify(quotes));
-  showToast('Preventivo salvato nello storico ✅');
-}
-
-function backupSupplier(i){
-  const s = suppliers[i];
-
-  const stato = document.getElementById(`stato-${i}`).value;
-  const sopralluogo = document.getElementById(`sopralluogo-${i}`).value;
-  const prezzo = document.getElementById(`prezzo-${i}`).value;
-  const marca = document.getElementById(`marca-${i}`).value;
-  const note = document.getElementById(`note-${i}`).value;
-  const ranking = document.getElementById(`ranking-${i}`).value;
-
-  const payload = {
-    nome:s.name,
-    citta:s.city,
-    email:s.email,
-    telefono:s.phone,
-    sito:s.site,
-    affidabilita:s.reliability,
-    stato,
-    data_sopralluogo:sopralluogo,
-    costo_preventivo:prezzo,
-    marca_proposta:marca,
-    note,
-    ranking,
-    timestamp:new Date().toISOString()
-  };
-
-  saveLocalQuote(payload);
-  sendToSheet(payload);
-  renderComparison();
-}
-
-function copySupplier(i){
-  const s = suppliers[i];
-
-  navigator.clipboard.writeText(`${s.name}
-${s.city}
-Email: ${s.email || '-'}
-Tel: ${s.phone || '-'}
-Sito: ${s.site || '-'}`);
-
-  showToast('Contatto copiato ✅');
-}
-
-function downloadCsv(){
-  let csv='Nome;Citta;Email;Telefono;Sito;Affidabilita\n';
-
-  suppliers.forEach(s=>{
-    csv += [s.name,s.city,s.email,s.phone,s.site,s.reliability]
-      .map(v=>`"${String(v||'').replace(/"/g,'""')}"`)
-      .join(';') + '\n';
-  });
-
-  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'clima-rush-contatti.csv';
-  a.click();
-}
-
-function render(){
-  const q = document.getElementById('q').value.toLowerCase().trim();
-  const f = document.getElementById('filter').value;
-  const list = document.getElementById('list');
-  list.innerHTML = '';
-
-  const arr = suppliers.map((s,i)=>({...s,i})).filter(s=>{
-    const txt = `${s.name} ${s.city} ${s.email} ${s.phone}`.toLowerCase();
-    if(q && !txt.includes(q)) return false;
-    if(f === 'email' && !s.email) return false;
-    if(f === 'high' && s.reliability !== 'Alta') return false;
-    return true;
-  });
-
-  arr.forEach(s=>{
-    const subject = enc(getSubject());
-    const body = enc(getBody());
-
-    const gmail = s.email ? `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(s.email)}&su=${subject}&body=${body}` : '';
-    const mailto = s.email ? `mailto:${s.email}?subject=${subject}&body=${body}` : '';
-    const tel = s.phone ? `tel:${cleanPhone(s.phone)}` : '';
-
-    list.insertAdjacentHTML('beforeend',`
-      <article class="supplier">
-        <div class="supplier-head">
-          <div>
-            <h3>${s.name}</h3>
-            <div class="mut">📍 ${s.city}</div>
-          </div>
-          ${badge(s.reliability)}
-        </div>
-
-        <div class="details">
-          <div>📧 ${s.email || '<span class="mut">email non inserita</span>'}</div>
-          <div>📞 ${s.phone || '<span class="mut">telefono non inserito</span>'}</div>
-          <div>🌐 ${s.site ? `<a style="color:var(--blue)" href="${s.site}" target="_blank">sito</a>` : '<span class="mut">sito non inserito</span>'}</div>
-          <div>⭐ ${s.reliability}</div>
-        </div>
-
-        <div class="quote-grid">
-          <select id="stato-${s.i}">
-            <option>Da contattare</option>
-            <option>Mail inviata</option>
-            <option>Risposto</option>
-            <option>Sopralluogo fissato</option>
-            <option>Preventivo ricevuto</option>
-            <option>Scartato</option>
-            <option>Selezionato</option>
-          </select>
-
-          <input id="sopralluogo-${s.i}" type="date" />
-
-          <input id="prezzo-${s.i}" type="number" placeholder="Costo preventivo es. 6500" />
-
-          <input id="marca-${s.i}" placeholder="Marca proposta es. Daikin / Mitsubishi" />
-
-          <select id="ranking-${s.i}">
-            <option value="">Ranking</option>
-            <option value="5">⭐⭐⭐⭐⭐ Ottimo</option>
-            <option value="4">⭐⭐⭐⭐ Buono</option>
-            <option value="3">⭐⭐⭐ Medio</option>
-            <option value="2">⭐⭐ Scarso</option>
-            <option value="1">⭐ Bocciato</option>
-          </select>
-
-          <input class="full" id="note-${s.i}" placeholder="Note tecniche / condizioni / garanzia" />
-        </div>
-
-        <div class="actions">
-          ${gmail ? `<a class="btn gold" target="_blank" href="${gmail}">Apri Gmail</a>` : ''}
-          ${mailto ? `<a class="btn blue" href="${mailto}">Apri Mail</a>` : ''}
-          ${tel ? `<a class="btn" href="${tel}">Chiama</a>` : ''}
-          <button class="btn" onclick="copySupplier(${s.i})">Copia</button>
-          <button class="btn green" onclick="backupSupplier(${s.i})">☁️ Salva preventivo</button>
-        </div>
-      </article>
-    `);
-  });
-}
+async function sendToSheet(payload){const url=localStorage.getItem('clima_script_url');if(!url)return;try{await fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})}catch(e){console.error(e)}}
+function jumpQuote(i){showTab('preventivi',document.querySelectorAll('.tab')[2]);setTimeout(()=>document.getElementById(`quote-card-${i}`)?.scrollIntoView({behavior:'smooth',block:'center'}),100)}
 
 function renderComparison(){
-  const box = document.getElementById('comparisonBox');
-
-  const quotes = getQuotes()
-    .filter(q => q.costo_preventivo || q.ranking || q.marca_proposta)
-    .sort((a,b)=>{
-      const ra = Number(a.ranking || 0);
-      const rb = Number(b.ranking || 0);
-      const pa = Number(a.costo_preventivo || 999999);
-      const pb = Number(b.costo_preventivo || 999999);
-
-      if(rb !== ra) return rb - ra;
-      return pa - pb;
-    });
-
-  if(!quotes.length){
-    box.innerHTML = '<p class="mut">Nessun preventivo salvato ancora.</p>';
-    return;
-  }
-
-  box.innerHTML = `
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Fornitore</th>
-            <th>Marca</th>
-            <th>Costo</th>
-            <th>Ranking</th>
-            <th>Sopralluogo</th>
-            <th>Stato</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${quotes.map((q,i)=>`
-            <tr>
-              <td>${i+1}</td>
-              <td>${q.nome || ''}</td>
-              <td>${q.marca_proposta || '-'}</td>
-              <td>${q.costo_preventivo ? '€ ' + Number(q.costo_preventivo).toLocaleString('it-IT') : '-'}</td>
-              <td>${q.ranking ? '⭐'.repeat(Number(q.ranking)) : '-'}</td>
-              <td>${q.data_sopralluogo || '-'}</td>
-              <td>${q.stato || '-'}</td>
-              <td>${q.note || '-'}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    </div>
-  `;
+ const box=document.getElementById('comparisonBox');const q=getQuotes().filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta).sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999));
+ if(!q.length){box.innerHTML='<p class="mut">Nessun preventivo salvato.</p>';return}
+ box.innerHTML=`<div class="tablewrap"><table><thead><tr><th>#</th><th>Fornitore</th><th>Marca</th><th>Costo</th><th>Ranking</th><th>Sopralluogo</th><th>Stato</th><th>Note</th></tr></thead><tbody>${q.map((x,i)=>`<tr><td>${i+1}</td><td>${x.nome}</td><td>${x.marca_proposta||'-'}</td><td>${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'-'}</td><td>${x.ranking?'⭐'.repeat(Number(x.ranking)):'-'}</td><td>${x.data_sopralluogo||'-'}</td><td>${x.stato||'-'}</td><td>${x.note||'-'}</td></tr>`).join('')}</tbody></table></div>`
 }
-
-function clearQuotes(){
-  if(confirm('Vuoi cancellare lo storico preventivi salvato su questo dispositivo?')){
-    localStorage.removeItem('clima_quotes');
-    renderComparison();
-    showToast('Storico cancellato ✅');
-  }
+function renderDashboard(){
+ const q=getQuotes();document.getElementById('kFornitori').textContent=suppliers.length;document.getElementById('kPreventivi').textContent=q.length;
+ const prices=q.map(x=>Number(x.costo_preventivo)).filter(Boolean);document.getElementById('kPrezzo').textContent=prices.length?'€ '+Math.min(...prices).toLocaleString('it-IT'):'-';
+ document.getElementById('dashBest').innerHTML=q.length?q.sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999)).slice(0,3).map((x,i)=>`<div class="event"><b>${i+1}. ${x.nome}</b><br><span class="mut">${x.marca_proposta||'-'} · ${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'prezzo mancante'} · ${x.ranking?'⭐'.repeat(Number(x.ranking)):'ranking mancante'}</span></div>`).join(''):'<p class="mut">Nessun dato ancora.</p>';
+ const steps=[];q.filter(x=>x.data_sopralluogo).sort((a,b)=>(a.data_sopralluogo||'').localeCompare(b.data_sopralluogo||'')).slice(0,5).forEach(x=>steps.push(`<div class="event"><b>${x.data_sopralluogo}</b><br>${x.nome}<br><span class="mut">${x.stato}</span></div>`));document.getElementById('nextSteps').innerHTML=steps.join('')||'<p class="mut">Nessun sopralluogo fissato.</p>'
 }
+function renderTimeline(){const q=getQuotes();document.getElementById('timelineBox').innerHTML=q.length?q.map(x=>`<div class="event"><b>${x.nome}</b><br><span class="mut">${x.stato||'Da aggiornare'}${x.data_sopralluogo?' · Sopralluogo: '+x.data_sopralluogo:''}</span></div>`).join(''):'<p class="mut">Nessun evento ancora.</p>'}
 
-loadConfig();
-render();
-renderComparison();
+function copyEmail(){navigator.clipboard.writeText(getBody());toast('Email copiata ✅')}
+function downloadCsv(){let csv='Nome;Citta;Email;Telefono;Sito;Affidabilita\n';suppliers.forEach(s=>csv+=[s.name,s.city,s.email,s.phone,s.site,s.reliability].map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(';')+'\n');downloadFile(csv,'clima-rush-contatti.csv','text/csv')}
+function downloadFile(content,name,type){const b=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)}
+function saveConfig(){localStorage.setItem('clima_script_url',document.getElementById('scriptUrl').value.trim());toast('URL salvato ✅')}
+function clearConfig(){localStorage.removeItem('clima_script_url');document.getElementById('scriptUrl').value='';toast('URL rimosso ✅')}
+function testSheet(){sendToSheet({nome:'TEST CLIMA RUSH',stato:'Test collegamento',timestamp:new Date().toISOString()});toast('Test inviato ✅')}
+function exportJson(){downloadFile(JSON.stringify({quotes:getQuotes(),settings:getSettings()},null,2),'clima-rush-backup.json','application/json')}
+function importJson(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const d=JSON.parse(r.result);if(d.quotes)setQuotes(d.quotes);if(d.settings)localStorage.setItem('clima_settings',JSON.stringify(d.settings));renderAll();toast('Backup importato ✅')};r.readAsText(f)}
+function getSettings(){return JSON.parse(localStorage.getItem('clima_settings')||'{}')}
+function saveSettings(){localStorage.setItem('clima_settings',JSON.stringify({projectName:projectName.value,homeMq:homeMq.value,splitCount:splitCount.value}));toast('Impostazioni salvate ✅')}
+function clearQuotes(){if(confirm('Cancellare storico preventivi locale?')){localStorage.removeItem('clima_quotes');renderAll();toast('Storico cancellato ✅')}}
+function resetAll(){if(confirm('Cancellare TUTTI i dati locali?')){localStorage.clear();location.reload()}}
+
+function renderAll(){renderSuppliers();renderQuotesEditor();renderComparison();renderDashboard();renderTimeline()}
+document.getElementById('scriptUrl').value=localStorage.getItem('clima_script_url')||'';
+renderAll();
 </script>
-
 </body>
 </html>
