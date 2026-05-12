@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clima Rush - Richiesta Preventivi</title>
+  <style>
+    :root{
+      --bg:#07101d;--panel:#111b2d;--panel2:#17233a;--txt:#f8fafc;--mut:#9aa7bd;--line:#ffffff1c;
+      --gold:#d7b56d;--green:#39d98a;--blue:#7dd3fc;--shadow:0 18px 60px rgba(0,0,0,.35);--radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,#16223a 0,#07101d 42%,#030712 100%);color:var(--txt)}
+    header{position:sticky;top:0;z-index:5;background:rgba(7,16,29,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .wrap{max-width:1220px;margin:auto;padding:18px}
+    .top{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    h1{margin:0;font-size:26px}.sub{color:var(--mut);font-size:14px;margin-top:4px}
+    .pill{border:1px solid var(--line);background:#ffffff10;border-radius:999px;padding:8px 12px;color:var(--mut);font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr 1.25fr;gap:18px;align-items:start}
+    .card{background:linear-gradient(180deg,var(--panel),#0d1627);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .card h2{margin:0 0 12px;font-size:20px}.mut{color:var(--mut)}
+    textarea,input,select{width:100%;background:#081224;color:var(--txt);border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit;outline:none}
+    textarea{min-height:360px;resize:vertical;line-height:1.45}
+    .btn{border:0;border-radius:14px;padding:11px 13px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center;background:#22304b;color:var(--txt);border:1px solid var(--line)}
+    .btn.gold{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827}.btn.green{background:#123927;color:#c6f6d5}.btn.blue{background:#103345;color:#d8f3ff}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+    .supplier{background:linear-gradient(180deg,var(--panel2),#101a2b);border:1px solid var(--line);border-radius:20px;padding:15px;margin-bottom:12px}
+    .supplier-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .supplier h3{margin:0 0 4px;font-size:17px}
+    .badge{font-size:12px;border-radius:999px;padding:5px 9px;border:1px solid var(--line);white-space:nowrap}
+    .ok{background:#0f3b29;color:#9ff2c4}.warn{background:#4a3512;color:#ffe6a8}
+    .details{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:11px 0;color:var(--mut);font-size:13px}
+    .actions{display:flex;flex-wrap:wrap;gap:8px}.note,.mini{font-size:12px;color:var(--mut)}
+    .searchbox{display:grid;grid-template-columns:1fr 170px;gap:10px;margin-bottom:12px}
+    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#111827;border:1px solid var(--line);box-shadow:var(--shadow);padding:12px 16px;border-radius:999px;display:none;z-index:9}
+    .toast.show{display:block}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+    .kpi{background:#ffffff0a;border:1px solid var(--line);border-radius:16px;padding:12px}.kpi b{display:block;color:var(--gold);font-size:20px}
+    footer{color:var(--mut);text-align:center;padding:26px;font-size:12px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.searchbox{grid-template-columns:1fr}.details{grid-template-columns:1fr}.wrap{padding:14px}header{position:relative}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <div>
+      <h1>❄️ Clima Rush</h1>
+      <div class="sub">Mini tool per chiedere preventivi climatizzazione • Muscoline e dintorni</div>
+    </div>
+    <div class="pill">v1.0 • HTML singolo • iPhone friendly</div>
+  </div>
+</header>
+
+<main class="wrap grid">
+<section class="card">
+<h2>1) Testo email standard</h2>
+<p class="mut">Modifica il testo una volta sola. I pulsanti Gmail/Mail useranno sempre questo testo aggiornato.</p>
+
+<label class="mini">Oggetto</label>
+<input id="subject" value="Richiesta preventivo impianto di raffrescamento – nuova abitazione a Muscoline" />
+
+<br><br>
+
+<label class="mini">Corpo email</label>
+<textarea id="emailBody">Buongiorno,
+vi contatto perché stiamo ultimando una nuova abitazione a Muscoline (BS) e vorremmo ricevere un preventivo per l’installazione di un impianto di raffrescamento.
+
+L’abitazione è già predisposta con:
+
+- tubazioni in multistrato (andata/ritorno)
+- punti di connessione per unità esterna
+- scarichi condensa
+- scatole da incasso già predisposte:
+  - n.1 zona giorno openspace
+  - n.3 zona notte (camere)
+
+L’idea sarebbe quella di installare:
+
+- 1 split nella zona giorno openspace
+- 1 split per ciascuna camera nella zona notte
+
+Totale ipotizzato: 4 split.
+
+In allegato invio le quote/planimetrie dell’abitazione con i mq, così da poter valutare meglio dimensionamento e tipologia di impianto.
+
+Se necessario possiamo accordarci anche per un sopralluogo.
+
+Rimango a disposizione.
+
+Grazie mille,
+Manuele Bertelli</textarea>
+
+<div class="toolbar">
+  <button class="btn gold" onclick="copyEmail()">📋 Copia email</button>
+  <button class="btn blue" onclick="downloadCsv()">⬇️ Scarica CSV contatti</button>
+  <button class="btn" onclick="resetEmail()">↩️ Ripristina testo</button>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><span class="mini">Fornitori</span><b id="kTot">0</b></div>
+  <div class="kpi"><span class="mini">Con email</span><b id="kEmail">0</b></div>
+  <div class="kpi"><span class="mini">Con telefono</span><b id="kTel">0</b></div>
+</div>
+
+<p class="note">Nota furba: allega planimetria e foto delle predisposizioni. Così eviti preventivi “a sentimento”, categoria molto pericolosa per il portafoglio.</p>
+</section>
+
+<section class="card">
+<h2>2) Contatti fornitori</h2>
+<div class="searchbox">
+  <input id="q" placeholder="Cerca per nome, paese, email..." oninput="render()"/>
+  <select id="filter" onchange="render()">
+    <option value="all">Tutti</option>
+    <option value="email">Solo con email</option>
+    <option value="phone">Solo con telefono</option>
+    <option value="high">Contatto più affidabile</option>
+  </select>
+</div>
+<div id="list"></div>
+</section>
+</main>
+
+<footer>Clima Rush • creato per richiesta preventivi rapida • controlla sempre i dati prima dell’invio definitivo.</footer>
+<div id="toast" class="toast">Copiato ✅</div>
+
+<script>
+const defaultEmail=document.getElementById('emailBody').value;
+
+const suppliers=[
+{name:'Garda Frigor',city:'Bedizzole / zona Garda',email:'info@gardafrigor.it',phone:'030 6874133',whatsapp:'',site:'https://www.gardafrigor.it',reliability:'Alta',note:'Climatizzazione e refrigerazione. Contatto email da sito.'},
+{name:'Termolombarda',city:'Brescia',email:'info@termolombarda.it',phone:'030 348221',whatsapp:'',site:'',reliability:'Alta',note:'Termoidraulica/clima area Brescia.'},
+{name:'Bonati Clima',city:'Lonato del Garda',email:'info@bonaticlima.it',phone:'030 9913709',whatsapp:'',site:'',reliability:'Alta',note:'Zona Garda, utile per Muscoline.'},
+{name:'Bassini Termoidraulica',city:'Muscoline',email:'info@termoidraulicabassini.it',phone:'',whatsapp:'',site:'https://termoidraulicabassini.it',reliability:'Alta',note:'Molto vicino: da contattare per sopralluogo rapido.'},
+{name:'Zilioli Clima',city:'Gavardo',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Contatto da ricontrollare online/telefono.'},
+{name:'Scimeca Clima',city:'Desenzano del Garda',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare prima dell’invio.'},
+{name:'TIEMME Impianti',city:'Brescia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Tecnoclima',city:'Salò / Garda',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Nome generico: verificare azienda corretta.'},
+{name:'P.G. Idroclima',city:'Provincia di Brescia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da ricontrollare.'},
+{name:'Life Clima',city:'Brescia / hinterland',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'AL Climatizzazione',city:'Brescia / Garda',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Refrigerazioni B.Z.',city:'Brescia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Zanini e Maselli',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'S.I. Impianti',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Sesana Idraulica',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Termobiesse',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Tecnoclima di Scalvinoni Luca e Fabio',city:'Brescia / Garda',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'LS Clima',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Mora Cesare Srl',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Italfrigo',city:'Brescia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Signorini Romano',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Goldoni Enrico Impianti',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'Facchini Alessandro Thomas',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'},
+{name:'C.M. Clima',city:'Brescia provincia',email:'',phone:'',whatsapp:'',site:'',reliability:'Media',note:'Da verificare.'}
+];
+
+function cleanPhone(p){return (p||'').replace(/[^0-9+]/g,'')}
+function enc(s){return encodeURIComponent(s||'')}
+function getBody(){return document.getElementById('emailBody').value}
+function getSubject(){return document.getElementById('subject').value}
+
+function badge(r){
+  return r==='Alta'
+    ? '<span class="badge ok">Contatto più affidabile</span>'
+    : '<span class="badge warn">Da verificare</span>';
+}
+
+function showToast(t='Copiato ✅'){
+  const el=document.getElementById('toast');
+  el.textContent=t;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),1800);
+}
+
+function copyEmail(){
+  navigator.clipboard.writeText(getBody()).then(()=>showToast('Email copiata ✅'));
+}
+
+function copySupplier(i){
+  const s=suppliers[i];
+  navigator.clipboard.writeText(`${s.name}
+${s.city}
+Email: ${s.email||'-'}
+Tel: ${s.phone||'-'}
+Sito: ${s.site||'-'}`).then(()=>showToast('Contatto copiato ✅'));
+}
+
+function resetEmail(){
+  document.getElementById('emailBody').value=defaultEmail;
+  showToast('Testo ripristinato ✅');
+}
+
+function render(){
+  const q=document.getElementById('q').value.toLowerCase().trim();
+  const f=document.getElementById('filter').value;
+  const list=document.getElementById('list');
+  list.innerHTML='';
+
+  let arr=suppliers.map((s,i)=>({...s,i})).filter(s=>{
+    const txt=(`${s.name} ${s.city} ${s.email} ${s.phone} ${s.note}`).toLowerCase();
+    if(q&&!txt.includes(q))return false;
+    if(f==='email'&&!s.email)return false;
+    if(f==='phone'&&!s.phone)return false;
+    if(f==='high'&&s.reliability!=='Alta')return false;
+    return true;
+  });
+
+  document.getElementById('kTot').textContent=suppliers.length;
+  document.getElementById('kEmail').textContent=suppliers.filter(s=>s.email).length;
+  document.getElementById('kTel').textContent=suppliers.filter(s=>s.phone).length;
+
+  if(!arr.length){
+    list.innerHTML='<p class="mut">Nessun risultato.</p>';
+    return;
+  }
+
+  arr.forEach(s=>{
+    const subject=enc(getSubject());
+    const body=enc(getBody());
+    const gmail=s.email?`https://mail.google.com/mail/?view=cm&fs=1&to=${enc(s.email)}&su=${subject}&body=${body}`:'';
+    const mailto=s.email?`mailto:${s.email}?subject=${subject}&body=${body}`:'';
+    const tel=s.phone?`tel:${cleanPhone(s.phone)}`:'';
+    const wa=s.whatsapp?`https://wa.me/${cleanPhone(s.whatsapp).replace('+','')}?text=${enc('Buongiorno, vi contatto per un preventivo climatizzazione per una nuova abitazione a Muscoline. Posso inviarvi planimetria e dettagli?')}`:'';
+
+    list.insertAdjacentHTML('beforeend',`
+      <article class="supplier">
+        <div class="supplier-head">
+          <div>
+            <h3>${s.name}</h3>
+            <div class="mut">📍 ${s.city}</div>
+          </div>
+          ${badge(s.reliability)}
+        </div>
+        <div class="details">
+          <div>📧 ${s.email||'<span class="mut">email non inserita</span>'}</div>
+          <div>📞 ${s.phone||'<span class="mut">telefono non inserito</span>'}</div>
+          <div>🌐 ${s.site?`<a style="color:var(--blue)" href="${s.site}" target="_blank">sito</a>`:'<span class="mut">sito non inserito</span>'}</div>
+          <div>📝 ${s.note||''}</div>
+        </div>
+        <div class="actions">
+          ${gmail?`<a class="btn gold" target="_blank" href="${gmail}">Apri Gmail</a>`:''}
+          ${mailto?`<a class="btn blue" href="${mailto}">Apri Mail</a>`:''}
+          ${wa?`<a class="btn green" target="_blank" href="${wa}">WhatsApp</a>`:''}
+          ${tel?`<a class="btn" href="${tel}">Chiama</a>`:''}
+          <button class="btn" onclick="copySupplier(${s.i})">Copia contatto</button>
+        </div>
+      </article>
+    `);
+  });
+}
+
+function downloadCsv(){
+  let csv='Nome;Citta;Email;Telefono;Sito;Affidabilita;Note\n';
+  suppliers.forEach(s=>{
+    csv+=[s.name,s.city,s.email,s.phone,s.site,s.reliability,s.note]
+      .map(v=>`"${String(v||'').replace(/"/g,'""')}"`)
+      .join(';')+'\n';
+  });
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='clima-rush-contatti.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+render();
+</script>
+</body>
+</html>
