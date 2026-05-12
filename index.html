@@ -352,8 +352,18 @@ function render(){
             <option>Scartato</option>
             <option>Selezionato</option>
           </select>
-          <input id="prezzo-${s.i}" placeholder="Prezzo preventivo es. 6500" />
-          <input id="note-${s.i}" placeholder="Note es. Daikin, Mitsubishi, ecc." />
+ <input id="sopralluogo-${s.i}" type="date" />
+<input id="prezzo-${s.i}" type="number" placeholder="Costo preventivo es. 6500" />
+<input id="marca-${s.i}" placeholder="Marca proposta es. Daikin / Mitsubishi" />
+<input id="note-${s.i}" placeholder="Note tecniche / condizioni / garanzia" />
+<select id="ranking-${s.i}">
+  <option value="">Ranking</option>
+  <option value="5">⭐⭐⭐⭐⭐ Ottimo</option>
+  <option value="4">⭐⭐⭐⭐ Buono</option>
+  <option value="3">⭐⭐⭐ Medio</option>
+  <option value="2">⭐⭐ Scarso</option>
+  <option value="1">⭐ Bocciato</option>
+</select>
         </div>
 
         <div class="actions">
