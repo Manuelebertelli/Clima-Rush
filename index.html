@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Clima Rush v1.4</title>
+<title>Clima Rush v1.5</title>
 <style>
-:root{--bg:#07101d;--card:#111b2d;--card2:#17233a;--txt:#f8fafc;--mut:#9aa7bd;--line:#ffffff1c;--gold:#d7b56d;--green:#39d98a;--blue:#7dd3fc;--red:#ff6b8a;--r:22px;--shadow:0 18px 60px #0008}
+:root{--bg:#07101d;--card:#111b2d;--card2:#17233a;--txt:#f8fafc;--mut:#9aa7bd;--line:#ffffff1c;--gold:#d7b56d;--green:#39d98a;--blue:#7dd3fc;--red:#ff6b8a;--warn:#ffe6a8;--r:22px;--shadow:0 18px 60px #0008}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,#16223a,#07101d 45%,#030712);color:var(--txt)}
 header{position:sticky;top:0;z-index:10;background:#07101ddd;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .wrap{max-width:1250px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
@@ -14,13 +14,13 @@ h1{margin:0;font-size:26px}h2{margin:0 0 12px}.mut,.mini{color:var(--mut)}.mini{
 .section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 12;background:linear-gradient(180deg,var(--card),#0d1627);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px}.half{grid-column:span 6}.third{grid-column:span 4}.two{grid-column:span 8}
 input,textarea,select{width:100%;background:#081224;color:var(--txt);border:1px solid var(--line);border-radius:14px;padding:11px;font:inherit}textarea{min-height:260px;resize:vertical;line-height:1.45}
 .btn{border:1px solid var(--line);background:#22304b;color:var(--txt);border-radius:14px;padding:10px 12px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;gap:7px;align-items:center;justify-content:center}.btn.gold{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827}.btn.green{background:#123927;color:#c6f6d5}.btn.blue{background:#103345;color:#d8f3ff}.btn.red{background:#421827;color:#ffd6df}
-.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.supplier{background:linear-gradient(180deg,var(--card2),#101a2b);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px}.supplier h3{margin:0 0 4px}.head{display:flex;justify-content:space-between;gap:10px}.badge{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;white-space:nowrap}.ok{background:#0f3b29;color:#9ff2c4}.warn{background:#4a3512;color:#ffe6a8}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.supplier{background:linear-gradient(180deg,var(--card2),#101a2b);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px}.supplier h3{margin:0 0 4px}.head{display:flex;justify-content:space-between;gap:10px}.badge{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;white-space:nowrap}.ok{background:#0f3b29;color:#9ff2c4}.warn{background:#4a3512;color:#ffe6a8}.bad{background:#421827;color:#ffd6df}
 .kpi{background:#fff1;border:1px solid var(--line);border-radius:18px;padding:14px}.kpi b{display:block;color:var(--gold);font-size:24px;margin-top:4px}
 .formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}
 table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--gold)}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
 .timeline{border-left:2px solid var(--gold);padding-left:14px}.event{margin:0 0 14px;background:#fff1;border:1px solid var(--line);border-radius:14px;padding:12px}
 .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#111827;border:1px solid var(--line);box-shadow:var(--shadow);padding:12px 16px;border-radius:999px;display:none;z-index:99}.toast.show{display:block}
-.syncdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px}
+.syncdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px}.dirty{outline:2px solid #d7b56d66}
 @media(max-width:900px){.half,.third,.two{grid-column:span 12}.formgrid{grid-template-columns:1fr}header{position:relative}.wrap{padding:12px}}
 </style>
 </head>
@@ -29,11 +29,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;borde
 <header>
 <div class="wrap">
   <div class="top">
-    <div>
-      <h1>❄️ Clima Rush</h1>
-      <div class="mut">CRM preventivi climatizzazione • Muscoline</div>
-    </div>
-    <div class="pill"><span class="syncdot" id="syncDot"></span><span id="syncStatus">v1.4 • autosync</span></div>
+    <div><h1>❄️ Clima Rush</h1><div class="mut">CRM preventivi climatizzazione • Muscoline</div></div>
+    <div class="pill"><span class="syncdot" id="syncDot"></span><span id="syncStatus">v1.5 • sync apertura + manuale</span></div>
   </div>
   <div class="tabs">
     <button class="tab active" onclick="showTab('dashboard',this)">🏠 Dashboard</button>
@@ -53,7 +50,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;borde
   <div class="card third kpi"><span class="mini">Fornitori</span><b id="kFornitori">0</b></div>
   <div class="card third kpi"><span class="mini">Preventivi salvati</span><b id="kPreventivi">0</b></div>
   <div class="card third kpi"><span class="mini">Miglior prezzo</span><b id="kPrezzo">-</b></div>
-  <div class="card half"><h2>🎯 Prossimi sopralluoghi</h2><div id="nextSteps" class="timeline"></div></div>
+  <div class="card half"><h2>⚠️ Follow-up consigliati</h2><div id="followUps"></div></div>
   <div class="card half"><h2>🏆 Migliori preventivi</h2><div id="dashBest"></div></div>
 </div>
 </section>
@@ -66,6 +63,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;borde
       <input id="q" placeholder="Cerca per nome, paese, email..." oninput="renderSuppliers()">
       <select id="filter" onchange="renderSuppliers()">
         <option value="all">Tutti</option>
+        <option value="todo">Da contattare</option>
+        <option value="contacted">Già contattati</option>
         <option value="email">Solo con email</option>
         <option value="high">Contatto più affidabile</option>
       </select>
@@ -113,7 +112,7 @@ Manuele Bertelli</textarea>
 <section id="preventivi" class="section">
 <div class="card">
   <h2>📝 Gestione preventivi</h2>
-  <p class="mut">I dati vengono salvati automaticamente dopo ogni modifica e sincronizzati con Google Sheet.</p>
+  <p class="mut">Quando modifichi un campo, la scheda diventa “modifiche non salvate”. Premi “Salva modifiche” per aggiornare locale + Google Sheet.</p>
   <div id="quotesEditor"></div>
 </div>
 </section>
@@ -141,7 +140,7 @@ Manuele Bertelli</textarea>
 <div class="grid">
   <div class="card half">
     <h2>☁️ Google Sheet Backup</h2>
-    <p class="mut mini">Incolla l’URL Apps Script Web App. Da quel momento sync e salvataggio sono automatici.</p>
+    <p class="mut mini">Sync solo all’apertura e con bottone manuale. Nessun autosync continuo.</p>
     <input id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXX/exec">
     <div class="row">
       <button class="btn green" onclick="saveConfig()">💾 Salva URL</button>
@@ -164,7 +163,6 @@ Manuele Bertelli</textarea>
 </section>
 
 </main>
-
 <div id="toast" class="toast">OK</div>
 
 <script>
@@ -195,16 +193,9 @@ const suppliers=[
 {name:'C.M. Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'}
 ];
 
-let autoSaveTimers={};
-let isSyncing=false;
+let dirtyQuotes=new Set();
 
-function showTab(id,btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-}
-
+function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}
 function enc(s){return encodeURIComponent(s||'')}
 function cleanPhone(p){return(p||'').replace(/[^0-9+]/g,'')}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
@@ -212,146 +203,160 @@ function getQuotes(){return JSON.parse(localStorage.getItem('clima_quotes')||'[]
 function setQuotes(q){localStorage.setItem('clima_quotes',JSON.stringify(q))}
 function getSubject(){return document.getElementById('subject').value}
 function getBody(){return document.getElementById('emailBody').value}
-function badge(r){return r==='Alta'?'<span class="badge ok">Affidabile</span>':'<span class="badge warn">Da verificare</span>'}
-function setSyncStatus(t,ok=true){
-  document.getElementById('syncStatus').textContent=t;
-  document.getElementById('syncDot').style.background=ok?'var(--green)':'var(--red)';
+
+function setSyncStatus(t,ok=true){document.getElementById('syncStatus').textContent=t;document.getElementById('syncDot').style.background=ok?'var(--green)':'var(--red)'}
+function updateLastSyncText(){const el=document.getElementById('lastSync');if(el)el.textContent='Ultima sincronizzazione: '+(localStorage.getItem('clima_last_sync')||'mai')}
+
+function stateBadge(stato){
+ if(!stato||stato==='Da contattare')return '<span class="badge warn">⚠️ Da contattare</span>';
+ if(stato==='Selezionato')return '<span class="badge ok">🏆 Selezionato</span>';
+ if(stato==='Preventivo ricevuto')return '<span class="badge ok">💰 Preventivo ricevuto</span>';
+ if(stato==='Sopralluogo fissato')return '<span class="badge ok">📅 Sopralluogo fissato</span>';
+ if(stato==='Scartato')return '<span class="badge bad">❌ Scartato</span>';
+ return `<span class="badge ok">✅ ${stato}</span>`;
 }
+
+function reliabilityBadge(r){return r==='Alta'?'<span class="badge ok">Affidabile</span>':'<span class="badge warn">Da verificare</span>'}
 
 function normalizeRow(r){
-  return {
-    nome:r.Nome || r.nome || '',
-    citta:r.Città || r.Citta || r.citta || '',
-    email:r.Email || r.email || '',
-    telefono:r.Telefono || r.telefono || '',
-    sito:r.Sito || r.sito || '',
-    affidabilita:r.Affidabilità || r.Affidabilita || r.affidabilita || '',
-    stato:r.Stato || r.stato || '',
-    data_sopralluogo:r['Data sopralluogo'] || r.data_sopralluogo || '',
-    costo_preventivo:r['Costo preventivo'] || r.costo_preventivo || '',
-    marca_proposta:r['Marca proposta'] || r.marca_proposta || '',
-    note:r.Note || r.note || '',
-    ranking:r.Ranking || r.ranking || '',
-    timestamp:r.Timestamp || r.timestamp || ''
-  }
+ return {
+  timestamp:r.Timestamp||r.timestamp||'',
+  nome:r.Nome||r.nome||'',
+  citta:r.Città||r.Citta||r.citta||'',
+  email:r.Email||r.email||'',
+  telefono:r.Telefono||r.telefono||'',
+  stato:r.Stato||r.stato||'',
+  data_ultimo_contatto:r['Data ultimo contatto']||r.data_ultimo_contatto||'',
+  data_sopralluogo:r['Data sopralluogo']||r.data_sopralluogo||'',
+  costo_preventivo:r['Costo preventivo']||r.costo_preventivo||'',
+  marca_proposta:r['Marca proposta']||r.marca_proposta||'',
+  note:r.Note||r.note||'',
+  ranking:r.Ranking||r.ranking||'',
+  sito:r.Sito||r.sito||'',
+  affidabilita:r.Affidabilità||r.Affidabilita||r.affidabilita||''
+ }
 }
 
-function mergeQuotes(local, cloud){
-  const map=new Map();
-  [...local,...cloud].forEach(q=>{
-    if(!q.nome)return;
-    const existing=map.get(q.nome);
-    const t1=new Date(existing?.timestamp||0).getTime();
-    const t2=new Date(q.timestamp||0).getTime();
-    if(!existing || t2>=t1) map.set(q.nome,q);
-  });
-  return Array.from(map.values());
+function mergeQuotes(local,cloud){
+ const map=new Map();
+ [...local,...cloud].forEach(q=>{
+  if(!q.nome)return;
+  const old=map.get(q.nome);
+  const tOld=new Date(old?.timestamp||0).getTime();
+  const tNew=new Date(q.timestamp||0).getTime();
+  if(!old||tNew>=tOld)map.set(q.nome,q);
+ });
+ return Array.from(map.values());
 }
 
 async function syncFromCloud(showMsg=false){
-  const url=localStorage.getItem('clima_script_url');
-  if(!url)return;
-  if(isSyncing)return;
+ const url=localStorage.getItem('clima_script_url');
+ if(!url)return;
 
-  isSyncing=true;
-  setSyncStatus('sync in corso...',true);
+ setSyncStatus('sync in corso...',true);
 
-  try{
-    const res=await fetch(url,{method:'GET'});
-    const data=await res.json();
-    const cloud=Array.isArray(data)?data.map(normalizeRow):[];
-    const merged=mergeQuotes(getQuotes(),cloud);
-    setQuotes(merged);
-    localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));
-    updateLastSyncText();
-    renderAll(false);
-    setSyncStatus('autosync attivo',true);
-    if(showMsg)toast('Dati importati da Google Sheet ✅');
-  }catch(e){
-    console.error(e);
-    setSyncStatus('sync errore',false);
-    if(showMsg)toast('Errore sync cloud ❌');
-  }
-
-  isSyncing=false;
+ try{
+  const res=await fetch(url,{method:'GET'});
+  const data=await res.json();
+  const cloud=Array.isArray(data)?data.map(normalizeRow):[];
+  const merged=mergeQuotes(getQuotes(),cloud);
+  setQuotes(merged);
+  dirtyQuotes.clear();
+  localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));
+  updateLastSyncText();
+  renderAll(true);
+  setSyncStatus('sync completato',true);
+  if(showMsg)toast('Dati importati da Google Sheet ✅');
+ }catch(e){
+  console.error(e);
+  setSyncStatus('errore sync',false);
+  if(showMsg)toast('Errore sync cloud ❌');
+ }
 }
 
 async function sendToSheet(payload){
-  const url=localStorage.getItem('clima_script_url');
-  if(!url)return;
-
-  try{
-    await fetch(url,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify(payload)
-    });
-    localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));
-    updateLastSyncText();
-    setSyncStatus('salvato cloud',true);
-  }catch(e){
-    console.error(e);
-    setSyncStatus('cloud non salvato',false);
-  }
+ const url=localStorage.getItem('clima_script_url');
+ if(!url)return;
+ try{
+  await fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));
+  updateLastSyncText();
+  setSyncStatus('salvato cloud',true);
+ }catch(e){
+  console.error(e);
+  setSyncStatus('errore cloud',false);
+ }
 }
 
-function saveQuote(i, silent=false){
-  const s=suppliers[i];
-  const payload={
-    nome:s.name,
-    citta:s.city,
-    email:s.email,
-    telefono:s.phone,
-    sito:s.site,
-    affidabilita:s.reliability,
-    stato:document.getElementById(`stato-${i}`)?.value||'',
-    data_sopralluogo:document.getElementById(`sopralluogo-${i}`)?.value||'',
-    costo_preventivo:document.getElementById(`prezzo-${i}`)?.value||'',
-    marca_proposta:document.getElementById(`marca-${i}`)?.value||'',
-    note:document.getElementById(`note-${i}`)?.value||'',
-    ranking:document.getElementById(`ranking-${i}`)?.value||'',
-    timestamp:new Date().toISOString()
-  };
-
-  const arr=getQuotes();
-  const idx=arr.findIndex(q=>q.nome===payload.nome);
-  idx>=0?arr[idx]=payload:arr.push(payload);
-  setQuotes(arr);
-  sendToSheet(payload);
-  renderDashboard();
-  renderComparison();
-  renderTimeline();
-  if(!silent)toast('Salvataggio automatico ✅');
+function markDirty(i){
+ dirtyQuotes.add(i);
+ const card=document.getElementById(`quote-box-${i}`);
+ const status=document.getElementById(`save-status-${i}`);
+ if(card)card.classList.add('dirty');
+ if(status)status.innerHTML='<span class="badge warn">● Modifiche non salvate</span>';
 }
 
-function autoSaveQuote(i){
-  clearTimeout(autoSaveTimers[i]);
-  autoSaveTimers[i]=setTimeout(()=>saveQuote(i,true),900);
+function buildPayload(i){
+ const s=suppliers[i];
+ return {
+  timestamp:new Date().toISOString(),
+  nome:s.name,
+  citta:s.city,
+  email:s.email,
+  telefono:s.phone,
+  sito:s.site,
+  affidabilita:s.reliability,
+  stato:document.getElementById(`stato-${i}`)?.value||'',
+  data_ultimo_contatto:document.getElementById(`ultimo-${i}`)?.value||'',
+  data_sopralluogo:document.getElementById(`sopralluogo-${i}`)?.value||'',
+  costo_preventivo:document.getElementById(`prezzo-${i}`)?.value||'',
+  marca_proposta:document.getElementById(`marca-${i}`)?.value||'',
+  note:document.getElementById(`note-${i}`)?.value||'',
+  ranking:document.getElementById(`ranking-${i}`)?.value||''
+ }
+}
+
+function saveQuote(i){
+ const payload=buildPayload(i);
+ const arr=getQuotes();
+ const idx=arr.findIndex(q=>q.nome===payload.nome);
+ idx>=0?arr[idx]=payload:arr.push(payload);
+ setQuotes(arr);
+ dirtyQuotes.delete(i);
+ sendToSheet(payload);
+ renderAll(true);
+ toast('Modifiche salvate ✅');
 }
 
 function renderSuppliers(){
  const q=document.getElementById('q')?.value.toLowerCase().trim()||'';
  const f=document.getElementById('filter')?.value||'all';
+ const quotes=getQuotes();
  const box=document.getElementById('supplierList');box.innerHTML='';
 
  suppliers.map((s,i)=>({...s,i})).filter(s=>{
+  const saved=quotes.find(x=>x.nome===s.name)||{};
+  const contacted=saved.stato&&saved.stato!=='Da contattare';
   const t=(`${s.name} ${s.city} ${s.email} ${s.phone}`).toLowerCase();
   if(q&&!t.includes(q))return false;
+  if(f==='todo'&&contacted)return false;
+  if(f==='contacted'&&!contacted)return false;
   if(f==='email'&&!s.email)return false;
   if(f==='high'&&s.reliability!=='Alta')return false;
   return true;
  }).forEach(s=>{
+  const saved=quotes.find(x=>x.nome===s.name)||{};
   const gmail=s.email?`https://mail.google.com/mail/?view=cm&fs=1&to=${enc(s.email)}&su=${enc(getSubject())}&body=${enc(getBody())}`:'';
   const mailto=s.email?`mailto:${s.email}?subject=${enc(getSubject())}&body=${enc(getBody())}`:'';
   const tel=s.phone?`tel:${cleanPhone(s.phone)}`:'';
 
   box.insertAdjacentHTML('beforeend',`
-  <article class="supplier">
+   <article class="supplier">
     <div class="head">
-      <div><h3>${s.name}</h3><div class="mut">📍 ${s.city}</div></div>${badge(s.reliability)}
+      <div><h3>${s.name}</h3><div class="mut">📍 ${s.city}</div></div>
+      ${stateBadge(saved.stato)}
     </div>
-    <p class="mini">📧 ${s.email||'—'} · 📞 ${s.phone||'—'}</p>
+    <p class="mini">📧 ${s.email||'—'} · 📞 ${s.phone||'—'}<br>Ultimo contatto: ${saved.data_ultimo_contatto||'—'}</p>
     <div class="row">
       ${gmail?`<a class="btn gold" target="_blank" href="${gmail}">Gmail</a>`:''}
       ${mailto?`<a class="btn blue" href="${mailto}">Mail</a>`:''}
@@ -359,8 +364,8 @@ function renderSuppliers(){
       ${s.site?`<a class="btn" target="_blank" href="${s.site}">Sito</a>`:''}
       <button class="btn green" onclick="jumpQuote(${s.i})">Gestisci preventivo</button>
     </div>
-  </article>`);
- })
+   </article>`);
+ });
 }
 
 function renderQuotesEditor(){
@@ -370,103 +375,64 @@ function renderQuotesEditor(){
  suppliers.forEach((s,i)=>{
   const saved=quotes.find(q=>q.nome===s.name)||{};
   box.insertAdjacentHTML('beforeend',`
-  <article class="supplier">
+   <article class="supplier" id="quote-box-${i}">
     <div class="head">
-      <div><h3>${s.name}</h3><div class="mut">${s.city}</div></div>${badge(s.reliability)}
+      <div><h3>${s.name}</h3><div class="mut">${s.city}</div></div>
+      <div id="save-status-${i}">${stateBadge(saved.stato)}</div>
     </div>
     <div class="formgrid" id="quote-card-${i}">
-      <select id="stato-${i}" onchange="autoSaveQuote(${i})">
-        <option>Da contattare</option>
-        <option>Mail inviata</option>
-        <option>Risposto</option>
-        <option>Sopralluogo fissato</option>
-        <option>Preventivo ricevuto</option>
-        <option>Scartato</option>
-        <option>Selezionato</option>
+      <select id="stato-${i}" onchange="markDirty(${i})">
+        <option>Da contattare</option><option>Mail inviata</option><option>Risposto</option><option>Sopralluogo fissato</option><option>Preventivo ricevuto</option><option>Scartato</option><option>Selezionato</option>
       </select>
-      <input id="sopralluogo-${i}" type="date" value="${saved.data_sopralluogo||''}" onchange="autoSaveQuote(${i})">
-      <input id="prezzo-${i}" type="number" placeholder="Costo preventivo" value="${saved.costo_preventivo||''}" oninput="autoSaveQuote(${i})">
-      <input id="marca-${i}" placeholder="Marca proposta" value="${saved.marca_proposta||''}" oninput="autoSaveQuote(${i})">
-      <select id="ranking-${i}" onchange="autoSaveQuote(${i})">
-        <option value="">Ranking</option>
-        <option value="5">⭐⭐⭐⭐⭐ Ottimo</option>
-        <option value="4">⭐⭐⭐⭐ Buono</option>
-        <option value="3">⭐⭐⭐ Medio</option>
-        <option value="2">⭐⭐ Scarso</option>
-        <option value="1">⭐ Bocciato</option>
+      <input id="ultimo-${i}" type="date" value="${saved.data_ultimo_contatto||''}" onchange="markDirty(${i})">
+      <input id="sopralluogo-${i}" type="date" value="${saved.data_sopralluogo||''}" onchange="markDirty(${i})">
+      <input id="prezzo-${i}" type="number" placeholder="Costo preventivo" value="${saved.costo_preventivo||''}" oninput="markDirty(${i})">
+      <input id="marca-${i}" placeholder="Marca proposta" value="${saved.marca_proposta||''}" oninput="markDirty(${i})">
+      <select id="ranking-${i}" onchange="markDirty(${i})">
+        <option value="">Ranking</option><option value="5">⭐⭐⭐⭐⭐ Ottimo</option><option value="4">⭐⭐⭐⭐ Buono</option><option value="3">⭐⭐⭐ Medio</option><option value="2">⭐⭐ Scarso</option><option value="1">⭐ Bocciato</option>
       </select>
-      <input class="full" id="note-${i}" placeholder="Note tecniche / garanzia / condizioni" value="${saved.note||''}" oninput="autoSaveQuote(${i})">
+      <input class="full" id="note-${i}" placeholder="Note tecniche / garanzia / condizioni" value="${saved.note||''}" oninput="markDirty(${i})">
     </div>
     <div class="row">
-      <button class="btn green" onclick="saveQuote(${i})">💾 Salva ora</button>
+      <button class="btn green" onclick="saveQuote(${i})">💾 Salva modifiche</button>
     </div>
-  </article>`);
+   </article>`);
 
   if(saved.stato)document.getElementById(`stato-${i}`).value=saved.stato;
   if(saved.ranking)document.getElementById(`ranking-${i}`).value=saved.ranking;
- })
+ });
 }
 
 function jumpQuote(i){
-  showTab('preventivi',document.querySelectorAll('.tab')[2]);
-  setTimeout(()=>document.getElementById(`quote-card-${i}`)?.scrollIntoView({behavior:'smooth',block:'center'}),100);
+ showTab('preventivi',document.querySelectorAll('.tab')[2]);
+ setTimeout(()=>document.getElementById(`quote-card-${i}`)?.scrollIntoView({behavior:'smooth',block:'center'}),100);
 }
 
 function renderComparison(){
  const box=document.getElementById('comparisonBox');
- const q=getQuotes()
-  .filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta||x.stato)
-  .sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999));
-
+ const q=getQuotes().filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta||x.stato).sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999));
  if(!q.length){box.innerHTML='<p class="mut">Nessun preventivo salvato.</p>';return}
-
- box.innerHTML=`<div class="tablewrap"><table>
- <thead><tr><th>#</th><th>Fornitore</th><th>Marca</th><th>Costo</th><th>Ranking</th><th>Sopralluogo</th><th>Stato</th><th>Note</th></tr></thead>
- <tbody>${q.map((x,i)=>`<tr>
- <td>${i+1}</td>
- <td>${x.nome}</td>
- <td>${x.marca_proposta||'-'}</td>
- <td>${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'-'}</td>
- <td>${x.ranking?'⭐'.repeat(Number(x.ranking)):'-'}</td>
- <td>${x.data_sopralluogo||'-'}</td>
- <td>${x.stato||'-'}</td>
- <td>${x.note||'-'}</td>
- </tr>`).join('')}</tbody></table></div>`;
+ box.innerHTML=`<div class="tablewrap"><table><thead><tr><th>#</th><th>Fornitore</th><th>Marca</th><th>Costo</th><th>Ranking</th><th>Ultimo contatto</th><th>Sopralluogo</th><th>Stato</th><th>Note</th></tr></thead><tbody>${q.map((x,i)=>`<tr><td>${i+1}</td><td>${x.nome}</td><td>${x.marca_proposta||'-'}</td><td>${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'-'}</td><td>${x.ranking?'⭐'.repeat(Number(x.ranking)):'-'}</td><td>${x.data_ultimo_contatto||'-'}</td><td>${x.data_sopralluogo||'-'}</td><td>${x.stato||'-'}</td><td>${x.note||'-'}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 function renderDashboard(){
  const q=getQuotes();
  document.getElementById('kFornitori').textContent=suppliers.length;
  document.getElementById('kPreventivi').textContent=q.length;
-
  const prices=q.map(x=>Number(x.costo_preventivo)).filter(Boolean);
  document.getElementById('kPrezzo').textContent=prices.length?'€ '+Math.min(...prices).toLocaleString('it-IT'):'-';
 
- const best=q
- .filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta)
- .sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999))
- .slice(0,3);
+ const best=q.filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta).sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999)).slice(0,3);
+ document.getElementById('dashBest').innerHTML=best.length?best.map((x,i)=>`<div class="event"><b>${i+1}. ${x.nome}</b><br><span class="mut">${x.marca_proposta||'-'} · ${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'prezzo mancante'} · ${x.ranking?'⭐'.repeat(Number(x.ranking)):'ranking mancante'}</span></div>`).join(''):'<p class="mut">Nessun dato ancora.</p>';
 
- document.getElementById('dashBest').innerHTML=best.length?best.map((x,i)=>`
- <div class="event"><b>${i+1}. ${x.nome}</b><br>
- <span class="mut">${x.marca_proposta||'-'} · ${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'prezzo mancante'} · ${x.ranking?'⭐'.repeat(Number(x.ranking)):'ranking mancante'}</span></div>
- `).join(''):'<p class="mut">Nessun dato ancora.</p>';
-
- const steps=q
- .filter(x=>x.data_sopralluogo)
- .sort((a,b)=>(a.data_sopralluogo||'').localeCompare(b.data_sopralluogo||''))
- .slice(0,5)
- .map(x=>`<div class="event"><b>${x.data_sopralluogo}</b><br>${x.nome}<br><span class="mut">${x.stato}</span></div>`);
-
- document.getElementById('nextSteps').innerHTML=steps.join('')||'<p class="mut">Nessun sopralluogo fissato.</p>';
+ const today=new Date();
+ const alerts=q.filter(x=>x.stato==='Mail inviata'&&x.data_ultimo_contatto).map(x=>({...x,days:Math.floor((today-new Date(x.data_ultimo_contatto))/(1000*60*60*24))})).filter(x=>x.days>=5);
+ document.getElementById('followUps').innerHTML=alerts.length?alerts.map(x=>`<div class="event"><b>${x.nome}</b><br><span class="mut">Mail inviata da ${x.days} giorni: sollecito consigliato.</span></div>`).join(''):'<p class="mut">Nessun follow-up urgente.</p>';
 }
 
 function renderTimeline(){
  const q=getQuotes();
- document.getElementById('timelineBox').innerHTML=q.length?q.map(x=>`
- <div class="event"><b>${x.nome}</b><br>
- <span class="mut">${x.stato||'Da aggiornare'}${x.data_sopralluogo?' · Sopralluogo: '+x.data_sopralluogo:''}</span></div>
- `).join(''):'<p class="mut">Nessun evento ancora.</p>';
+ document.getElementById('timelineBox').innerHTML=q.length?q.map(x=>`<div class="event"><b>${x.nome}</b><br><span class="mut">${x.stato||'Da aggiornare'}${x.data_sopralluogo?' · Sopralluogo: '+x.data_sopralluogo:''}${x.data_ultimo_contatto?' · Ultimo contatto: '+x.data_ultimo_contatto:''}</span></div>`).join(''):'<p class="mut">Nessun evento ancora.</p>';
 }
 
 function renderAll(rebuildEditors=true){
@@ -516,36 +482,24 @@ function exportJson(){
 }
 
 function importJson(e){
- const f=e.target.files[0];
- if(!f)return;
+ const f=e.target.files[0];if(!f)return;
  const r=new FileReader();
- r.onload=()=>{
-  const d=JSON.parse(r.result);
-  if(d.quotes)setQuotes(d.quotes);
-  renderAll();
-  toast('Backup importato ✅');
- };
+ r.onload=()=>{const d=JSON.parse(r.result);if(d.quotes)setQuotes(d.quotes);renderAll(true);toast('Backup importato ✅')};
  r.readAsText(f);
 }
 
 function clearQuotes(){
  if(confirm('Cancellare storico preventivi locale?')){
   localStorage.removeItem('clima_quotes');
-  renderAll();
+  renderAll(true);
   toast('Storico cancellato ✅');
  }
 }
 
-function updateLastSyncText(){
- const el=document.getElementById('lastSync');
- if(el)el.textContent='Ultima sincronizzazione: '+(localStorage.getItem('clima_last_sync')||'mai');
-}
-
 document.getElementById('scriptUrl').value=localStorage.getItem('clima_script_url')||'';
 updateLastSyncText();
-renderAll();
+renderAll(true);
 syncFromCloud(false);
-setInterval(()=>syncFromCloud(false),30000);
 </script>
 </body>
 </html>
