@@ -3,23 +3,229 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Clima Rush v1.8.3</title>
-<style>
-:root{--bg:#07101d;--card:#111b2d;--card2:#17233a;--txt:#f8fafc;--mut:#9aa7bd;--line:#ffffff1c;--gold:#d7b56d;--green:#39d98a;--blue:#7dd3fc;--red:#ff6b8a;--r:22px;--shadow:0 18px 60px #0008}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,#16223a,#07101d 45%,#030712);color:var(--txt)}header{position:sticky;top:0;z-index:10;background:#07101ddd;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.wrap{max-width:1260px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}h1{margin:0;font-size:26px}h2{margin:0 0 12px}.mut,.mini{color:var(--mut)}.mini{font-size:12px}.pill{border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:var(--mut);background:#fff1}.tabs{display:flex;gap:8px;overflow:auto;padding:10px 0}.tab{border:1px solid var(--line);background:#ffffff10;color:var(--txt);padding:10px 12px;border-radius:999px;white-space:nowrap;cursor:pointer}.tab.active{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827;font-weight:800}.section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 12;background:linear-gradient(180deg,var(--card),#0d1627);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px}.half{grid-column:span 6}.third{grid-column:span 4}.two{grid-column:span 8}input,textarea,select{width:100%;background:#081224;color:var(--txt);border:1px solid var(--line);border-radius:14px;padding:11px;font:inherit}textarea{min-height:250px;resize:vertical;line-height:1.45}.btn{border:1px solid var(--line);background:#22304b;color:var(--txt);border-radius:14px;padding:10px 12px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;gap:7px;align-items:center;justify-content:center}.btn.gold{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827}.btn.green{background:#123927;color:#c6f6d5}.btn.blue{background:#103345;color:#d8f3ff}.btn.red{background:#421827;color:#ffd6df}.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.supplier{background:linear-gradient(180deg,var(--card2),#101a2b);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px}.supplier h3{margin:0 0 4px}.head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.badge{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;white-space:nowrap}.ok{background:#0f3b29;color:#9ff2c4}.warn{background:#4a3512;color:#ffe6a8}.bad{background:#421827;color:#ffd6df}.kpi{background:#fff1;border:1px solid var(--line);border-radius:18px;padding:14px}.kpi b{display:block;color:var(--gold);font-size:24px;margin-top:4px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--gold)}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:16px}.timeline{border-left:2px solid var(--gold);padding-left:14px}.event{margin:0 0 14px;background:#fff1;border:1px solid var(--line);border-radius:14px;padding:12px}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#111827;border:1px solid var(--line);box-shadow:var(--shadow);padding:12px 16px;border-radius:999px;display:none;z-index:99}.toast.show{display:block}.syncdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px}.dirty{outline:2px solid #d7b56d66}.soft{opacity:.62}@media(max-width:900px){.half,.third,.two{grid-column:span 12}.formgrid{grid-template-columns:1fr}header{position:relative}.wrap{padding:12px}}
+<title>Clima Rush v.1.8.4</title>
 
-.optionbox{grid-column:1/-1;background:#ffffff0b;border:1px solid var(--line);border-radius:16px;padding:10px}.optiontitle{font-weight:900;color:var(--gold);margin-bottom:8px}.optiongrid{display:grid;grid-template-columns:1.2fr .8fr;gap:8px}.selectline{grid-column:1/-1;background:#07101d88;border:1px solid var(--line);border-radius:14px;padding:10px}
-@media(max-width:700px){.optiongrid{grid-template-columns:1fr}}
-/* v1.8.2 iPhone friendly */
-.mobilecards{display:none}.quote-card{background:#ffffff10;border:1px solid var(--line);border-radius:18px;padding:12px;margin:10px 0}.quote-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.quote-name{font-weight:900;font-size:16px}.quote-price{font-weight:900;color:var(--gold);font-size:18px;white-space:nowrap}.quote-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.quote-field{background:#07101d88;border:1px solid var(--line);border-radius:14px;padding:9px}.quote-field span{display:block;color:var(--mut);font-size:11px;margin-bottom:3px}.quote-field b{font-size:14px}.quote-note{grid-column:1/-1}.compact-note{margin:4px 0 0}.section .card{margin-bottom:10px}
-@media(max-width:700px){body{background:#07101d}.wrap{padding:10px}header .wrap{padding:10px 10px 8px}.top{gap:6px}.top h1{font-size:21px;line-height:1.1}.top .mut{font-size:13px}.pill{font-size:12px;padding:6px 9px}.tabs{padding:8px 0;gap:6px}.tab{padding:8px 10px;font-size:13px}.card{padding:13px;border-radius:20px;box-shadow:none}.card h2{font-size:22px;margin-bottom:8px}.card>p.mut{font-size:14px;margin:0 0 10px}.row{margin:8px 0;gap:7px}.btn{padding:9px 10px;font-size:13px}.tablewrap{display:none}.mobilecards{display:block}.quote-meta{grid-template-columns:1fr 1fr}.quote-name{font-size:15px}.quote-price{font-size:17px}.supplier{padding:12px;margin-bottom:8px}.grid{gap:10px}.kpi{padding:12px}.event{padding:10px;margin-bottom:10px}main.wrap{padding-bottom:24px}}
-@media(max-width:430px){.quote-meta{grid-template-columns:1fr}.quote-note{grid-column:auto}.quote-top{align-items:flex-start}.btn{font-size:12px}.card h2{font-size:20px}.top h1{font-size:20px}}
+<style>
+:root{
+  --bg:#07101d;--card:#111b2d;--card2:#17233a;--txt:#f8fafc;--mut:#9aa7bd;
+  --line:#ffffff1c;--gold:#d7b56d;--green:#39d98a;--blue:#7dd3fc;
+  --red:#ff6b8a;--r:22px;--shadow:0 18px 60px #0008;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:radial-gradient(circle at top left,#16223a,#07101d 45%,#030712);
+  color:var(--txt);
+}
+header{
+  position:sticky;top:0;z-index:10;
+  background:#07101ddd;backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.wrap{max-width:1250px;margin:auto;padding:16px}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{margin:0;font-size:26px}
+h2{margin:0 0 12px}
+.mut,.mini{color:var(--mut)}
+.mini{font-size:12px}
+.pill{
+  border:1px solid var(--line);padding:8px 12px;border-radius:999px;
+  color:var(--mut);background:#fff1;
+}
+.tabs{display:flex;gap:8px;overflow:auto;padding:10px 0}
+.tab{
+  border:1px solid var(--line);background:#ffffff10;color:var(--txt);
+  padding:10px 12px;border-radius:999px;white-space:nowrap;cursor:pointer;
+}
+.tab.active{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827;font-weight:800}
+.section{display:none}.section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.card{
+  grid-column:span 12;background:linear-gradient(180deg,var(--card),#0d1627);
+  border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;
+}
+.half{grid-column:span 6}.third{grid-column:span 4}.two{grid-column:span 8}
+input,textarea,select{
+  width:100%;background:#081224;color:var(--txt);
+  border:1px solid var(--line);border-radius:14px;padding:11px;font:inherit;
+}
+textarea{min-height:240px;resize:vertical;line-height:1.45}
+.btn{
+  border:1px solid var(--line);background:#22304b;color:var(--txt);
+  border-radius:14px;padding:10px 12px;font-weight:800;cursor:pointer;
+  text-decoration:none;display:inline-flex;gap:7px;align-items:center;justify-content:center;
+}
+.btn.gold{background:linear-gradient(135deg,#f3d990,#b99042);color:#111827}
+.btn.green{background:#123927;color:#c6f6d5}
+.btn.blue{background:#103345;color:#d8f3ff}
+.btn.red{background:#421827;color:#ffd6df}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.supplier{
+  background:linear-gradient(180deg,var(--card2),#101a2b);
+  border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px;
+}
+.supplier h3{margin:0 0 4px}
+.head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.badge{
+  font-size:12px;border:1px solid var(--line);border-radius:999px;
+  padding:5px 9px;white-space:nowrap;
+}
+.ok{background:#0f3b29;color:#9ff2c4}
+.warn{background:#4a3512;color:#ffe6a8}
+.bad{background:#421827;color:#ffd6df}
+.kpi{background:#fff1;border:1px solid var(--line);border-radius:18px;padding:14px}
+.kpi b{display:block;color:var(--gold);font-size:24px;margin-top:4px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.full{grid-column:1/-1}
+.toast{
+  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+  background:#111827;border:1px solid var(--line);box-shadow:var(--shadow);
+  padding:12px 16px;border-radius:999px;display:none;z-index:99;
+}
+.toast.show{display:block}
+.syncdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px}
+.dirty{outline:2px solid #d7b56d66}
+
+/* TABLE FIX */
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+th,td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+th{color:var(--gold)}
+.tablewrap{
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid var(--line);
+  border-radius:16px;
+}
+.cost-col{
+  min-width:130px;
+  white-space:nowrap;
+  font-weight:800;
+}
+.choice-col{min-width:220px}
+.notes-col{min-width:320px}
+.status-col{min-width:170px}
+.rank-col{
+  min-width:120px;
+  white-space:nowrap;
+}
+.mobile-price{
+  font-size:16px;
+  font-weight:800;
+  color:var(--gold);
+}
+.iva-note{
+  display:block;
+  font-size:11px;
+  color:var(--mut);
+  margin-top:2px;
+}
+
+@media(max-width:900px){
+  .half,.third,.two{grid-column:span 12}
+  .formgrid{grid-template-columns:1fr}
+  header{position:relative}
+  .wrap{padding:12px}
+  h1{font-size:24px}
+  .card{padding:14px}
+  .tabs{padding-bottom:8px}
+}
 </style>
 </head>
+
 <body>
-<header><div class="wrap"><div class="top"><div><h1>❄️ Clima Rush v.1.8.3</h1><div class="mut">CRM preventivi climatizzazione • Muscoline</div></div><div class="pill"><span class="syncdot" id="syncDot"></span><span id="syncStatus">v.1.8.3 • fix preventivo</span></div></div><div class="tabs"><button class="tab active" onclick="showTab('dashboard',this)">🏠 Dashboard</button><button class="tab" onclick="showTab('archivio',this)">📇 Tutti</button><button class="tab" onclick="showTab('selezionati',this)">⭐ Selezionati</button><button class="tab" onclick="showTab('preventivi',this)">📝 Preventivi</button><button class="tab" onclick="showTab('comparatore',this)">📊 Comparatore</button><button class="tab" onclick="showTab('timeline',this)">📅 Timeline</button><button class="tab" onclick="showTab('cloud',this)">☁️ Cloud</button></div></div></header>
+
+<header>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>❄️ Clima Rush v.1.8.4</h1>
+      <div class="mut">CRM preventivi climatizzazione • Muscoline</div>
+    </div>
+    <div class="pill">
+      <span class="syncdot" id="syncDot"></span>
+      <span id="syncStatus">sync apertura + manuale</span>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('dashboard',this)">🏠 Dashboard</button>
+    <button class="tab" onclick="showTab('tutti',this)">🗂️ Tutti</button>
+    <button class="tab" onclick="showTab('selezionati',this)">⭐ Selezionati</button>
+    <button class="tab" onclick="showTab('preventivi',this)">📝 Preventivi</button>
+    <button class="tab" onclick="showTab('comparatore',this)">📊 Comparatore</button>
+    <button class="tab" onclick="showTab('cloud',this)">☁️ Cloud</button>
+  </div>
+</div>
+</header>
+
 <main class="wrap">
-<section id="dashboard" class="section active"><div class="grid"><div class="card third kpi"><span class="mini">Fornitori totali</span><b id="kFornitori">0</b></div><div class="card third kpi"><span class="mini">Selezionati</span><b id="kSelezionati">0</b></div><div class="card third kpi"><span class="mini">Miglior prezzo</span><b id="kPrezzo">-</b></div><div class="card half"><h2>⚠️ Follow-up consigliati</h2><div id="followUps"></div></div><div class="card half"><h2>🏆 Migliori preventivi</h2><div id="dashBest"></div></div></div></section>
-<section id="archivio" class="section"><div class="grid"><div class="card two"><h2>📇 Tutti i fornitori</h2><div class="supplier"><h3>➕ Nuovo fornitore</h3><div class="formgrid"><input id="newName" placeholder="Nome fornitore"><input id="newCity" placeholder="Città / zona"><input id="newEmail" placeholder="Email"><input id="newPhone" placeholder="Telefono"><input id="newSite" placeholder="Sito web"><select id="newReliability"><option value="Media">Da verificare</option><option value="Alta">Contatto affidabile</option></select></div><div class="row"><button class="btn green" onclick="addSupplier()">➕ Aggiungi e seleziona</button><button class="btn" onclick="restoreHidden()">↩️ Ripristina nascosti</button></div></div><div class="formgrid"><input id="qAll" placeholder="Cerca in archivio..." oninput="renderArchive()"><select id="filterAll" onchange="renderArchive()"><option value="all">Tutti</option><option value="selected">Solo selezionati</option><option value="notselected">Non selezionati</option><option value="custom">Aggiunti da me</option><option value="email">Solo con email</option><option value="high">Affidabili</option></select></div><div id="archiveList" style="margin-top:12px"></div></div><div class="card"><h2>✉️ Email standard</h2><label class="mini">Oggetto</label><input id="subject" value="Richiesta preventivo impianto di raffrescamento – nuova abitazione a Muscoline"><br><br><label class="mini">Corpo email</label><textarea id="emailBody">Buongiorno,
+
+<section id="dashboard" class="section active">
+<div class="grid">
+  <div class="card third kpi"><span class="mini">Fornitori totali</span><b id="kFornitori">0</b></div>
+  <div class="card third kpi"><span class="mini">Selezionati</span><b id="kSelected">0</b></div>
+  <div class="card third kpi"><span class="mini">Miglior prezzo</span><b id="kPrezzo">-</b></div>
+  <div class="card half"><h2>⚠️ Follow-up consigliati</h2><div id="followUps"></div></div>
+  <div class="card half"><h2>🏆 Migliori preventivi</h2><div id="dashBest"></div></div>
+</div>
+</section>
+
+<section id="tutti" class="section">
+<div class="grid">
+  <div class="card two">
+    <h2>🗂️ Tutti i fornitori</h2>
+
+    <div class="supplier">
+      <h3>➕ Nuovo fornitore</h3>
+      <div class="formgrid">
+        <input id="newName" placeholder="Nome fornitore">
+        <input id="newCity" placeholder="Città / zona">
+        <input id="newEmail" placeholder="Email">
+        <input id="newPhone" placeholder="Telefono">
+        <input id="newSite" placeholder="Sito web">
+        <select id="newReliability">
+          <option value="Media">Da verificare</option>
+          <option value="Alta">Contatto affidabile</option>
+        </select>
+      </div>
+      <div class="row">
+        <button class="btn green" onclick="addSupplier()">➕ Aggiungi fornitore</button>
+      </div>
+    </div>
+
+    <div class="formgrid">
+      <input id="qAll" placeholder="Cerca fornitore..." oninput="renderAllSuppliers()">
+      <select id="filterAll" onchange="renderAllSuppliers()">
+        <option value="all">Tutti</option>
+        <option value="selected">Solo selezionati</option>
+        <option value="custom">Solo aggiunti da me</option>
+        <option value="email">Solo con email</option>
+      </select>
+    </div>
+
+    <div id="allSupplierList" style="margin-top:12px"></div>
+  </div>
+
+  <div class="card">
+    <h2>✉️ Email standard</h2>
+    <label class="mini">Oggetto</label>
+    <input id="subject" value="Richiesta preventivo impianto di raffrescamento – nuova abitazione a Muscoline">
+
+    <br><br>
+
+    <label class="mini">Corpo email</label>
+    <textarea id="emailBody">Buongiorno,
 vi contatto perché stiamo ultimando una nuova abitazione a Muscoline (BS) e vorremmo ricevere un preventivo per l’installazione di un impianto di raffrescamento.
 
 L’abitazione è già predisposta con:
@@ -41,64 +247,708 @@ In allegato invio le quote/planimetrie dell’abitazione con i mq.
 Se necessario possiamo accordarci anche per un sopralluogo.
 
 Grazie mille,
-Manuele Bertelli</textarea><div class="row"><button class="btn gold" onclick="copyEmail()">📋 Copia email</button><button class="btn blue" onclick="downloadCsv()">⬇️ CSV contatti</button></div></div></div></section>
-<section id="selezionati" class="section"><div class="card"><h2>⭐ Fornitori selezionati</h2><p class="mut">Qui vedi solo quelli operativi: selezionati, contattati o aggiunti da te.</p><div id="selectedList"></div></div></section>
-<section id="preventivi" class="section"><div class="card"><h2>📝 Gestione preventivi</h2><p class="mut">Mostra solo i fornitori selezionati. Dopo ogni modifica devi premere “Salva modifiche”.</p><div id="quotesEditor"></div></div></section>
-<section id="comparatore" class="section"><div class="card"><h2>📊 Comparatore preventivi</h2><p class="mut">Solo fornitori selezionati con dati salvati. Ranking più alto, poi prezzo più basso.</p><div class="row"><button class="btn blue" onclick="syncFromCloud(true)">📥 Sincronizza ora</button><button class="btn red" onclick="clearQuotes()">🗑️ Svuota storico locale</button></div><div id="comparisonBox"></div></div></section>
-<section id="timeline" class="section"><div class="card"><h2>📅 Timeline operativa</h2><div class="timeline" id="timelineBox"></div></div></section>
-<section id="cloud" class="section"><div class="grid"><div class="card half"><h2>☁️ Google Sheet Backup</h2><p class="mut mini">Sync solo all’apertura e con bottone manuale.</p><input id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXX/exec"><div class="row"><button class="btn green" onclick="saveConfig()">💾 Salva URL</button><button class="btn blue" onclick="syncFromCloud(true)">📥 Sincronizza ora</button><button class="btn" onclick="testSheet()">🧪 Test</button><button class="btn red" onclick="clearConfig()">🗑️ Reset URL</button></div><p class="mini" id="lastSync">Ultima sincronizzazione: mai</p></div><div class="card half"><h2>💾 Backup locale</h2><div class="row"><button class="btn blue" onclick="exportJson()">⬇️ Esporta JSON</button><button class="btn" onclick="document.getElementById('importFile').click()">⬆️ Importa JSON</button><input id="importFile" type="file" accept="application/json" style="display:none" onchange="importJson(event)"></div></div></div></section>
-</main><div id="toast" class="toast">OK</div>
+Manuele Bertelli</textarea>
+
+    <div class="row">
+      <button class="btn gold" onclick="copyEmail()">📋 Copia email</button>
+      <button class="btn blue" onclick="downloadCsv()">⬇️ CSV contatti</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="selezionati" class="section">
+<div class="card">
+  <h2>⭐ Fornitori selezionati</h2>
+  <p class="mut">Qui trovi solo i fornitori operativi: quelli a cui hai scritto, aggiunto o selezionato.</p>
+  <div id="selectedSupplierList"></div>
+</div>
+</section>
+
+<section id="preventivi" class="section">
+<div class="card">
+  <h2>📝 Preventivi</h2>
+  <p class="mut">Puoi inserire più opzioni: Top, Media, Alternativa. Poi scegli quale usare nel comparatore.</p>
+  <div id="quotesEditor"></div>
+</div>
+</section>
+
+<section id="comparatore" class="section">
+<div class="card">
+  <h2>📊 Comparatore preventivi</h2>
+  <p class="mut">Solo fornitori selezionati con dati salvati. Ranking più alto, poi prezzo più basso.</p>
+  <div class="row">
+    <button class="btn blue" onclick="syncFromCloud(true)">📥 Sincronizza ora</button>
+    <button class="btn red" onclick="clearQuotes()">🗑️ Svuota storico locale</button>
+  </div>
+  <div id="comparisonBox"></div>
+</div>
+</section>
+
+<section id="cloud" class="section">
+<div class="grid">
+  <div class="card half">
+    <h2>☁️ Google Sheet Backup</h2>
+    <input id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXX/exec">
+    <div class="row">
+      <button class="btn green" onclick="saveConfig()">💾 Salva URL</button>
+      <button class="btn blue" onclick="syncFromCloud(true)">📥 Sincronizza ora</button>
+      <button class="btn" onclick="testSheet()">🧪 Test</button>
+      <button class="btn red" onclick="clearConfig()">🗑️ Reset URL</button>
+    </div>
+    <p class="mini" id="lastSync">Ultima sincronizzazione: mai</p>
+  </div>
+
+  <div class="card half">
+    <h2>💾 Backup locale</h2>
+    <div class="row">
+      <button class="btn blue" onclick="exportJson()">⬇️ Esporta JSON</button>
+      <button class="btn" onclick="document.getElementById('importFile').click()">⬆️ Importa JSON</button>
+      <input id="importFile" type="file" accept="application/json" style="display:none" onchange="importJson(event)">
+    </div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<div id="toast" class="toast">OK</div>
+
 <script>
-const baseSuppliers=[{name:'Garda Frigor',city:'Bedizzole / zona Garda',email:'info@gardafrigor.it',phone:'030 6874133',site:'https://www.gardafrigor.it',reliability:'Alta'},{name:'Termolombarda',city:'Brescia',email:'info@termolombarda.it',phone:'030 348221',site:'',reliability:'Alta'},{name:'Bonati Clima',city:'Lonato del Garda',email:'info@bonaticlima.it',phone:'030 9913709',site:'',reliability:'Alta'},{name:'Bassini Termoidraulica',city:'Muscoline',email:'info@termoidraulicabassini.it',phone:'',site:'https://termoidraulicabassini.it',reliability:'Alta'},{name:'Zilioli Clima',city:'Gavardo',email:'',phone:'',site:'',reliability:'Media'},{name:'Scimeca Clima',city:'Desenzano del Garda',email:'',phone:'',site:'',reliability:'Media'},{name:'TIEMME Impianti',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},{name:'Tecnoclima',city:'Salò / Garda',email:'',phone:'',site:'',reliability:'Media'},{name:'P.G. Idroclima',city:'Provincia di Brescia',email:'',phone:'',site:'',reliability:'Media'},{name:'Life Clima',city:'Brescia / hinterland',email:'',phone:'',site:'',reliability:'Media'},{name:'AL Climatizzazione',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'},{name:'Refrigerazioni B.Z.',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},{name:'Zanini e Maselli',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'S.I. Impianti',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Sesana Idraulica',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Termobiesse',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Tecnoclima di Scalvinoni Luca e Fabio',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'},{name:'LS Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Mora Cesare Srl',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Italfrigo',city:'Brescia',email:'',phone:'',site:'',reliability:'Media'},{name:'Signorini Romano',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Goldoni Enrico Impianti',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'Facchini Alessandro Thomas',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'},{name:'C.M. Clima',city:'Brescia provincia',email:'',phone:'',site:'',reliability:'Media'}];
+const baseSuppliers=[
+{name:'Garda Frigor',city:'Bedizzole / zona Garda',email:'info@gardafrigor.it',phone:'030 6874133',site:'https://www.gardafrigor.it',reliability:'Alta'},
+{name:'Termolombarda',city:'Brescia / Salò',email:'info@termolombarda.it',phone:'0365 522424',site:'https://www.termolombarda.it',reliability:'Alta'},
+{name:'Bonati Clima',city:'Lonato del Garda',email:'info@bonaticlima.it',phone:'030 9913709',site:'',reliability:'Alta'},
+{name:'Bassini Termoidraulica',city:'Muscoline',email:'info@termoidraulicabassini.it',phone:'',site:'https://termoidraulicabassini.it',reliability:'Alta'},
+{name:'Zilioli Clima',city:'Gavardo',email:'',phone:'',site:'',reliability:'Media'},
+{name:'Scimeca Clima',city:'Desenzano del Garda',email:'',phone:'',site:'',reliability:'Media'},
+{name:'TIEMME Impianti',city:'Brescia',email:'info@tiemmeimpiantibrescia.it',phone:'3932969389',site:'https://www.tiemmeimpiantibrescia.it',reliability:'Alta'},
+{name:'TMR Termoidraulica Mario Rebuschi (Igor)',city:'Moniga del Garda',email:'info@termoidraulicarebuschi.it',phone:'3482937264',site:'https://www.termoidraulicarebuschi.it',reliability:'Alta'},
+{name:'Climatica Service Srl',city:'Brescia / Garda',email:'',phone:'',site:'',reliability:'Media'}
+];
+
 let dirtyQuotes=new Set();
-function showTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}function enc(s){return encodeURIComponent(s||'')}function cleanPhone(p){return(p||'').replace(/[^0-9+]/g,'')}function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}function getSubject(){return document.getElementById('subject').value}function getBody(){return document.getElementById('emailBody').value}
-function getCustomSuppliers(){return JSON.parse(localStorage.getItem('clima_custom_suppliers')||'[]')}function setCustomSuppliers(a){localStorage.setItem('clima_custom_suppliers',JSON.stringify(a))}function getHidden(){return JSON.parse(localStorage.getItem('clima_hidden_suppliers')||'[]')}function setHidden(a){localStorage.setItem('clima_hidden_suppliers',JSON.stringify(a))}function getSelected(){return JSON.parse(localStorage.getItem('clima_selected_suppliers')||'[]')}function setSelected(a){localStorage.setItem('clima_selected_suppliers',JSON.stringify(a))}function getQuotes(){return JSON.parse(localStorage.getItem('clima_quotes')||'[]')}function setQuotes(q){localStorage.setItem('clima_quotes',JSON.stringify(q))}
-function getAllSuppliers(includeHidden=false){const hidden=getHidden();const arr=[...baseSuppliers.map(s=>({...s,custom:false})),...getCustomSuppliers().map(s=>({...s,custom:true}))];return includeHidden?arr:arr.filter(s=>!hidden.includes(s.name))}function isSelected(name){return getSelected().includes(name)||!!getQuotes().find(q=>q.nome===name&&(q.stato&&q.stato!=='Da contattare'))}function getSelectedSuppliers(){return getAllSuppliers().filter(s=>isSelected(s.name)||s.custom)}
-function setSyncStatus(t,ok=true){document.getElementById('syncStatus').textContent=t;document.getElementById('syncDot').style.background=ok?'var(--green)':'var(--red)'}function updateLastSyncText(){const el=document.getElementById('lastSync');if(el)el.textContent='Ultima sincronizzazione: '+(localStorage.getItem('clima_last_sync')||'mai')}
-function stateBadge(stato){if(!stato||stato==='Da contattare')return '<span class="badge warn">⚠️ Da contattare</span>';if(stato==='Selezionato')return '<span class="badge ok">🏆 Selezionato</span>';if(stato==='Preventivo ricevuto')return '<span class="badge ok">💰 Preventivo ricevuto</span>';if(stato==='Sopralluogo fissato')return '<span class="badge ok">📅 Sopralluogo fissato</span>';if(stato==='Scartato')return '<span class="badge bad">❌ Scartato</span>';return `<span class="badge ok">✅ ${stato}</span>`}function reliabilityBadge(r){return r==='Alta'?'<span class="badge ok">Affidabile</span>':'<span class="badge warn">Da verificare</span>'}
-function normalizeRow(r){return{timestamp:r.Timestamp||r.timestamp||'',nome:r.Nome||r.nome||'',citta:r.Città||r.Citta||r.citta||'',email:r.Email||r.email||'',telefono:r.Telefono||r.telefono||'',stato:r.Stato||r.stato||'',data_ultimo_contatto:r['Data ultimo contatto']||r.data_ultimo_contatto||'',data_sopralluogo:r['Data sopralluogo']||r.data_sopralluogo||'',costo_preventivo:r['Costo preventivo']||r.costo_preventivo||'',marca_proposta:r['Marca proposta']||r.marca_proposta||'',opzione_scelta:r['Opzione scelta']||r.opzione_scelta||'',top_marca:r['Top marca']||r.top_marca||'',top_prezzo:r['Top prezzo']||r.top_prezzo||'',media_marca:r['Media marca']||r.media_marca||'',media_prezzo:r['Media prezzo']||r.media_prezzo||'',economica_marca:r['Economica marca']||r.economica_marca||'',economica_prezzo:r['Economica prezzo']||r.economica_prezzo||'',note:r.Note||r.note||'',ranking:r.Ranking||r.ranking||'',sito:r.Sito||r.sito||'',affidabilita:r.Affidabilità||r.Affidabilita||r.affidabilita||''}}
-function mergeQuotes(local,cloud){const map=new Map();[...local,...cloud].forEach(q=>{if(!q.nome)return;const old=map.get(q.nome);const tOld=new Date(old?.timestamp||0).getTime();const tNew=new Date(q.timestamp||0).getTime();if(!old||tNew>=tOld)map.set(q.nome,q)});return Array.from(map.values())}
-async function syncFromCloud(showMsg=false){const url=localStorage.getItem('clima_script_url');if(!url)return;setSyncStatus('sync in corso...',true);try{const res=await fetch(url,{method:'GET'});const data=await res.json();const cloud=Array.isArray(data)?data.map(normalizeRow).filter(q=>q.nome):[];const existingNames=new Set(getAllSuppliers().map(s=>String(s.name).toLowerCase()));const custom=getCustomSuppliers();let added=0;cloud.forEach(q=>{const key=String(q.nome).toLowerCase();if(q.nome&&key!=='test clima rush'&&!existingNames.has(key)){custom.push({name:q.nome,city:q.citta||'Importato da Google Sheet',email:q.email||'',phone:q.telefono||'',site:q.sito||'',reliability:q.affidabilita||'Media'});existingNames.add(key);added++;}});if(added>0)setCustomSuppliers(custom);setQuotes(mergeQuotes(getQuotes(),cloud));setSelected([...new Set([...getSelected(),...cloud.filter(q=>q.nome&&String(q.nome).toUpperCase()!=='TEST CLIMA RUSH').map(q=>q.nome)])]);dirtyQuotes.clear();localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));updateLastSyncText();renderAll(true);setSyncStatus('sync completato',true);if(showMsg)toast(added>0?`Dati importati + ${added} fornitori cloud ✅`:'Dati importati da Google Sheet ✅')}catch(e){console.error(e);setSyncStatus('errore sync',false);if(showMsg)toast('Errore sync cloud ❌')}}async function sendToSheet(payload){const url=localStorage.getItem('clima_script_url');if(!url)return;try{await fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));updateLastSyncText();setSyncStatus('salvato cloud',true)}catch(e){console.error(e);setSyncStatus('errore cloud',false)}}
-function addSupplier(){const name=document.getElementById('newName').value.trim();if(!name){alert('Inserisci almeno il nome del fornitore.');return}if(getAllSuppliers(true).some(s=>s.name.toLowerCase()===name.toLowerCase())){alert('Questo fornitore esiste già.');return}const custom=getCustomSuppliers();custom.push({name,city:newCity.value.trim(),email:newEmail.value.trim(),phone:newPhone.value.trim(),site:newSite.value.trim(),reliability:newReliability.value});setCustomSuppliers(custom);selectSupplier(name);['newName','newCity','newEmail','newPhone','newSite'].forEach(id=>document.getElementById(id).value='');newReliability.value='Media';renderAll(true);toast('Fornitore aggiunto e selezionato ✅')}
-function selectSupplier(name){const s=new Set(getSelected());s.add(name);setSelected([...s]);renderAll(true);toast('Fornitore selezionato ✅')}function unselectSupplier(name){if(!confirm(`Rimuovere "${name}" dai selezionati? Non cancello lo storico.`))return;setSelected(getSelected().filter(x=>x!==name));renderAll(true);toast('Rimosso dai selezionati ✅')}function hideSupplier(name){if(!confirm(`Nascondere "${name}" dall’archivio? Potrai ripristinarlo.`))return;const h=new Set(getHidden());h.add(name);setHidden([...h]);setSelected(getSelected().filter(x=>x!==name));renderAll(true);toast('Fornitore nascosto ✅')}function restoreHidden(){setHidden([]);renderAll(true);toast('Fornitori nascosti ripristinati ✅')}function deleteSupplier(name){if(!confirm(`Eliminare "${name}" dai fornitori aggiunti? Verrà eliminato anche lo storico locale.`))return;setCustomSuppliers(getCustomSuppliers().filter(s=>s.name!==name));setSelected(getSelected().filter(x=>x!==name));setQuotes(getQuotes().filter(q=>q.nome!==name));renderAll(true);toast('Fornitore eliminato ✅')}
-function markDirty(i){dirtyQuotes.add(i);const card=document.getElementById(`quote-box-${i}`);const status=document.getElementById(`save-status-${i}`);if(card)card.classList.add('dirty');if(status)status.innerHTML='<span class="badge warn">● Modifiche non salvate</span>'}function optionSummary(q){const parts=[];if(q.top_marca||q.top_prezzo)parts.push(`Top: ${q.top_marca||'-'}${q.top_prezzo?' € '+Number(q.top_prezzo).toLocaleString('it-IT'):''}`);if(q.media_marca||q.media_prezzo)parts.push(`Media: ${q.media_marca||'-'}${q.media_prezzo?' € '+Number(q.media_prezzo).toLocaleString('it-IT'):''}`);if(q.economica_marca||q.economica_prezzo)parts.push(`Economica: ${q.economica_marca||'-'}${q.economica_prezzo?' € '+Number(q.economica_prezzo).toLocaleString('it-IT'):''}`);return parts.join(' · ')}function pickOption(i){const chosen=document.getElementById(`opzione-${i}`)?.value||'top';const map={top:['top_marca','top_prezzo'],media:['media_marca','media_prezzo'],economica:['economica_marca','economica_prezzo']};const [mk,pk]=map[chosen]||map.top;return{marca:document.getElementById(`${mk}-${i}`)?.value||'',prezzo:document.getElementById(`${pk}-${i}`)?.value||''}}
-function buildPayload(i){const s=getSelectedSuppliers()[i];const picked=pickOption(i);return{timestamp:new Date().toISOString(),nome:s.name,citta:s.city,email:s.email,telefono:s.phone,sito:s.site,affidabilita:s.reliability,stato:document.getElementById(`stato-${i}`)?.value||'',data_ultimo_contatto:document.getElementById(`ultimo-${i}`)?.value||'',data_sopralluogo:document.getElementById(`sopralluogo-${i}`)?.value||'',opzione_scelta:document.getElementById(`opzione-${i}`)?.value||'top',top_marca:document.getElementById(`top_marca-${i}`)?.value||'',top_prezzo:document.getElementById(`top_prezzo-${i}`)?.value||'',media_marca:document.getElementById(`media_marca-${i}`)?.value||'',media_prezzo:document.getElementById(`media_prezzo-${i}`)?.value||'',economica_marca:document.getElementById(`economica_marca-${i}`)?.value||'',economica_prezzo:document.getElementById(`economica_prezzo-${i}`)?.value||'',costo_preventivo:picked.prezzo,marca_proposta:picked.marca,note:document.getElementById(`note-${i}`)?.value||'',ranking:document.getElementById(`ranking-${i}`)?.value||''}}
-function saveQuote(i){const payload=buildPayload(i);const arr=getQuotes();const idx=arr.findIndex(q=>q.nome===payload.nome);idx>=0?arr[idx]=payload:arr.push(payload);setQuotes(arr);selectSupplier(payload.nome);dirtyQuotes.delete(i);sendToSheet(payload);renderAll(true);toast('Modifiche salvate ✅')}
-function supplierCard(s,i,mode){const quotes=getQuotes();const saved=quotes.find(x=>x.nome===s.name)||{};const selected=isSelected(s.name)||s.custom;const gmail=s.email?`https://mail.google.com/mail/?view=cm&fs=1&to=${enc(s.email)}&su=${enc(getSubject())}&body=${enc(getBody())}`:'';const mailto=s.email?`mailto:${s.email}?subject=${enc(getSubject())}&body=${enc(getBody())}`:'';const tel=s.phone?`tel:${cleanPhone(s.phone)}`:'';return `<article class="supplier ${selected?'':'soft'}"><div class="head"><div><h3>${s.name} ${s.custom?'<span class="badge warn">Creato da te</span>':''}</h3><div class="mut">📍 ${s.city||'Zona non indicata'}</div></div>${stateBadge(saved.stato)}</div><p class="mini">📧 ${s.email||'—'} · 📞 ${s.phone||'—'}<br>Ultimo contatto: ${saved.data_ultimo_contatto||'—'}</p><div class="row">${gmail?`<a class="btn gold" target="_blank" href="${gmail}">Gmail</a>`:''}${mailto?`<a class="btn blue" href="${mailto}">Mail</a>`:''}${tel?`<a class="btn" href="${tel}">Chiama</a>`:''}${s.site?`<a class="btn" target="_blank" href="${s.site}">Sito</a>`:''}${selected?`<button class="btn" onclick="unselectSupplier('${String(s.name).replace(/'/g,"\\'")}')">Togli dai selezionati</button>`:`<button class="btn green" onclick="selectSupplier('${String(s.name).replace(/'/g,"\\'")}')">⭐ Seleziona</button>`}<button class="btn green" onclick="jumpQuoteByName('${String(s.name).replace(/'/g,"\\'")}')">Preventivo</button>${s.custom?`<button class="btn red" onclick="deleteSupplier('${String(s.name).replace(/'/g,"\\'")}')">Elimina</button>`:`<button class="btn red" onclick="hideSupplier('${String(s.name).replace(/'/g,"\\'")}')">Nascondi</button>`}</div></article>`}
-function renderArchive(){const q=document.getElementById('qAll')?.value.toLowerCase().trim()||'';const f=document.getElementById('filterAll')?.value||'all';const box=document.getElementById('archiveList');box.innerHTML='';getAllSuppliers().filter(s=>{const selected=isSelected(s.name)||s.custom;const t=(`${s.name} ${s.city} ${s.email} ${s.phone}`).toLowerCase();if(q&&!t.includes(q))return false;if(f==='selected'&&!selected)return false;if(f==='notselected'&&selected)return false;if(f==='custom'&&!s.custom)return false;if(f==='email'&&!s.email)return false;if(f==='high'&&s.reliability!=='Alta')return false;return true}).forEach((s,i)=>box.insertAdjacentHTML('beforeend',supplierCard(s,i,'archive')))}function renderSelectedList(){const box=document.getElementById('selectedList');box.innerHTML='';const arr=getSelectedSuppliers();if(!arr.length){box.innerHTML='<p class="mut">Nessun fornitore selezionato. Vai in “Tutti” e premi ⭐ Seleziona.</p>';return}arr.forEach((s,i)=>box.insertAdjacentHTML('beforeend',supplierCard(s,i,'selected')))}
-function renderQuotesEditor(){const box=document.getElementById('quotesEditor');box.innerHTML='';const quotes=getQuotes();const arr=getSelectedSuppliers();if(!arr.length){box.innerHTML='<p class="mut">Nessun fornitore selezionato.</p>';return}arr.forEach((s,i)=>{const saved=quotes.find(q=>q.nome===s.name)||{};const topMarca=saved.top_marca||saved.marca_proposta||'';const topPrezzo=saved.top_prezzo||saved.costo_preventivo||'';box.insertAdjacentHTML('beforeend',`<article class="supplier" id="quote-box-${i}"><div class="head"><div><h3>${s.name} ${s.custom?'<span class="badge warn">Creato da te</span>':''}</h3><div class="mut">${s.city||'Zona non indicata'}</div></div><div id="save-status-${i}">${stateBadge(saved.stato)}</div></div><div class="formgrid" id="quote-card-${i}"><select id="stato-${i}" onchange="markDirty(${i})"><option>Da contattare</option><option>Mail inviata</option><option>Risposto</option><option>Sopralluogo fissato</option><option>Preventivo ricevuto</option><option>Scartato</option><option>Selezionato</option></select><input id="ultimo-${i}" type="date" value="${saved.data_ultimo_contatto||''}" onchange="markDirty(${i})"><input id="sopralluogo-${i}" type="date" value="${saved.data_sopralluogo||''}" onchange="markDirty(${i})"><div class="selectline"><label class="mini">Opzione da usare nel comparatore</label><select id="opzione-${i}" onchange="markDirty(${i})"><option value="top">Opzione top</option><option value="media">Opzione media</option><option value="economica">Opzione economica</option></select></div><div class="optionbox"><div class="optiontitle">🏆 Opzione top</div><div class="optiongrid"><input id="top_marca-${i}" placeholder="Marca/modello top es. Daikin" value="${topMarca}" oninput="markDirty(${i})"><input id="top_prezzo-${i}" type="number" placeholder="Prezzo top" value="${topPrezzo}" oninput="markDirty(${i})"></div></div><div class="optionbox"><div class="optiontitle">⚖️ Opzione media</div><div class="optiongrid"><input id="media_marca-${i}" placeholder="Marca/modello medio es. Mitsubishi / Bosch" value="${saved.media_marca||''}" oninput="markDirty(${i})"><input id="media_prezzo-${i}" type="number" placeholder="Prezzo medio" value="${saved.media_prezzo||''}" oninput="markDirty(${i})"></div></div><div class="optionbox"><div class="optiontitle">💸 Opzione economica / alternativa</div><div class="optiongrid"><input id="economica_marca-${i}" placeholder="Marca/modello alternativa" value="${saved.economica_marca||''}" oninput="markDirty(${i})"><input id="economica_prezzo-${i}" type="number" placeholder="Prezzo alternativa" value="${saved.economica_prezzo||''}" oninput="markDirty(${i})"></div></div><select id="ranking-${i}" onchange="markDirty(${i})"><option value="">Ranking</option><option value="5">⭐⭐⭐⭐⭐ Ottimo</option><option value="4">⭐⭐⭐⭐ Buono</option><option value="3">⭐⭐⭐ Medio</option><option value="2">⭐⭐ Scarso</option><option value="1">⭐ Bocciato</option></select><input class="full" id="note-${i}" placeholder="Note tecniche / garanzia / condizioni" value="${saved.note||''}" oninput="markDirty(${i})"></div><div class="row"><button class="btn green" onclick="saveQuote(${i})">💾 Salva modifiche</button><button class="btn" onclick="unselectSupplier('${String(s.name).replace(/'/g,"\'")}')">Togli dai selezionati</button></div></article>`);if(saved.stato)document.getElementById(`stato-${i}`).value=saved.stato;if(saved.ranking)document.getElementById(`ranking-${i}`).value=saved.ranking;if(saved.opzione_scelta)document.getElementById(`opzione-${i}`).value=saved.opzione_scelta})}
 
-function jumpQuoteByName(name){
-  const selected = new Set(getSelected());
-  selected.add(name);
-  setSelected([...selected]);
-
-  renderAll(true);
-
-  const preventiviTab = Array.from(document.querySelectorAll('.tab'))
-    .find(btn => btn.textContent.includes('Preventivi')) || document.querySelectorAll('.tab')[3];
-
-  showTab('preventivi', preventiviTab);
-
-  setTimeout(() => {
-    const arr = getSelectedSuppliers();
-    const idx = arr.findIndex(s => s.name === name);
-    const el = document.getElementById(`quote-card-${idx}`);
-    if (el) {
-      el.scrollIntoView({behavior:'smooth', block:'center'});
-      const box = document.getElementById(`quote-box-${idx}`);
-      if (box) {
-        box.classList.add('dirty');
-        setTimeout(() => box.classList.remove('dirty'), 1200);
-      }
-    } else {
-      toast('Preventivo aperto: scorri nella sezione Preventivi ✅');
-    }
-  }, 180);
+function showTab(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
 }
 
-function renderComparison(){const selectedNames=new Set(getSelectedSuppliers().map(s=>s.name));const box=document.getElementById('comparisonBox');const q=getQuotes().filter(x=>selectedNames.has(x.nome)&&(x.costo_preventivo||x.ranking||x.marca_proposta||x.top_prezzo||x.media_prezzo||x.economica_prezzo||x.stato==='Preventivo ricevuto'||x.stato==='Selezionato')).sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999));if(!q.length){box.innerHTML='<p class="mut">Nessun preventivo salvato sui selezionati.</p>';return}const rows=q.map((x,i)=>`<tr><td>${i+1}</td><td>${x.nome}</td><td>${x.marca_proposta||'-'}</td><td>${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'-'}</td><td>${x.ranking?'⭐'.repeat(Number(x.ranking)):'-'}</td><td>${optionSummary(x)||'-'}</td><td>${x.stato||'-'}</td><td>${x.note||'-'}</td></tr>`).join('');const cards=q.map((x,i)=>`<article class="quote-card"><div class="quote-top"><div><div class="quote-name">${i+1}. ${x.nome}</div><p class="mini compact-note">${x.stato||'-'}</p></div><div class="quote-price">${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'€ -'}</div></div><div class="quote-meta"><div class="quote-field"><span>Scelta comparatore</span><b>${x.marca_proposta||'-'}</b></div><div class="quote-field"><span>Ranking</span><b>${x.ranking?'⭐'.repeat(Number(x.ranking)):'-'}</b></div><div class="quote-field quote-note"><span>Opzioni</span><b>${optionSummary(x)||'-'}</b></div><div class="quote-field"><span>Ultimo contatto</span><b>${x.data_ultimo_contatto||'-'}</b></div><div class="quote-field"><span>Sopralluogo</span><b>${x.data_sopralluogo||'-'}</b></div><div class="quote-field quote-note"><span>Note</span><b>${x.note||'-'}</b></div></div></article>`).join('');box.innerHTML=`<div class="mobilecards">${cards}</div><div class="tablewrap"><table><thead><tr><th>#</th><th>Fornitore</th><th>Scelta</th><th>Costo</th><th>Ranking</th><th>Tutte le opzioni</th><th>Stato</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table></div>`}
-function renderDashboard(){const all=getAllSuppliers();const selected=getSelectedSuppliers();const selectedNames=new Set(selected.map(s=>s.name));const q=getQuotes().filter(x=>selectedNames.has(x.nome));document.getElementById('kFornitori').textContent=all.length;document.getElementById('kSelezionati').textContent=selected.length;const prices=q.map(x=>Number(x.costo_preventivo)).filter(Boolean);document.getElementById('kPrezzo').textContent=prices.length?'€ '+Math.min(...prices).toLocaleString('it-IT'):'-';const best=q.filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta||x.stato==='Preventivo ricevuto'||x.stato==='Selezionato').sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999)).slice(0,3);dashBest.innerHTML=best.length?best.map((x,i)=>`<div class="event"><b>${i+1}. ${x.nome}</b><br><span class="mut">${x.marca_proposta||'-'} · ${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'prezzo mancante'} · ${x.ranking?'⭐'.repeat(Number(x.ranking)):'ranking mancante'}</span></div>`).join(''):'<p class="mut">Nessun dato ancora.</p>';const today=new Date();const alerts=q.filter(x=>x.stato==='Mail inviata'&&x.data_ultimo_contatto).map(x=>({...x,days:Math.floor((today-new Date(x.data_ultimo_contatto))/(1000*60*60*24))})).filter(x=>x.days>=5);followUps.innerHTML=alerts.length?alerts.map(x=>`<div class="event"><b>${x.nome}</b><br><span class="mut">Mail inviata da ${x.days} giorni: sollecito consigliato.</span></div>`).join(''):'<p class="mut">Nessun follow-up urgente.</p>'}function renderTimeline(){const selectedNames=new Set(getSelectedSuppliers().map(s=>s.name));const q=getQuotes().filter(x=>selectedNames.has(x.nome));timelineBox.innerHTML=q.length?q.map(x=>`<div class="event"><b>${x.nome}</b><br><span class="mut">${x.stato||'Da aggiornare'}${x.data_sopralluogo?' · Sopralluogo: '+x.data_sopralluogo:''}${x.data_ultimo_contatto?' · Ultimo contatto: '+x.data_ultimo_contatto:''}</span></div>`).join(''):'<p class="mut">Nessun evento sui selezionati.</p>'}
-function renderAll(rebuildEditors=true){renderArchive();renderSelectedList();if(rebuildEditors)renderQuotesEditor();renderComparison();renderDashboard();renderTimeline()}function copyEmail(){navigator.clipboard.writeText(getBody());toast('Email copiata ✅')}function downloadCsv(){let csv='Nome;Citta;Email;Telefono;Sito;Affidabilita;Selezionato;Custom\n';getAllSuppliers(true).forEach(s=>csv+=[s.name,s.city,s.email,s.phone,s.site,s.reliability,isSelected(s.name)?'Sì':'No',s.custom?'Sì':'No'].map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(';')+'\n');downloadFile(csv,'clima-rush-contatti.csv','text/csv')}function downloadFile(content,name,type){const b=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)}function saveConfig(){localStorage.setItem('clima_script_url',scriptUrl.value.trim());toast('URL salvato ✅');syncFromCloud(true)}function clearConfig(){localStorage.removeItem('clima_script_url');scriptUrl.value='';toast('URL rimosso ✅')}function testSheet(){sendToSheet({nome:'TEST CLIMA RUSH',stato:'Test collegamento',timestamp:new Date().toISOString()});toast('Test inviato ✅')}function exportJson(){downloadFile(JSON.stringify({quotes:getQuotes(),customSuppliers:getCustomSuppliers(),selected:getSelected(),hidden:getHidden()},null,2),'clima-rush-backup.json','application/json')}function importJson(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const d=JSON.parse(r.result);if(d.quotes)setQuotes(d.quotes);if(d.customSuppliers)setCustomSuppliers(d.customSuppliers);if(d.selected)setSelected(d.selected);if(d.hidden)setHidden(d.hidden);renderAll(true);toast('Backup importato ✅')};r.readAsText(f)}function clearQuotes(){if(confirm('Cancellare storico preventivi locale?')){localStorage.removeItem('clima_quotes');renderAll(true);toast('Storico cancellato ✅')}}
-scriptUrl.value=localStorage.getItem('clima_script_url')||'';updateLastSyncText();renderAll(true);syncFromCloud(false);
-</script></body></html>
+function toast(t){
+  const e=document.getElementById('toast');
+  e.textContent=t;
+  e.classList.add('show');
+  setTimeout(()=>e.classList.remove('show'),1800);
+}
+
+function enc(s){return encodeURIComponent(s||'')}
+function cleanPhone(p){return(p||'').replace(/[^0-9+]/g,'')}
+function getSubject(){return document.getElementById('subject').value}
+function getBody(){return document.getElementById('emailBody').value}
+
+function getCustomSuppliers(){return JSON.parse(localStorage.getItem('clima_custom_suppliers')||'[]')}
+function setCustomSuppliers(a){localStorage.setItem('clima_custom_suppliers',JSON.stringify(a))}
+function getSelected(){return JSON.parse(localStorage.getItem('clima_selected_suppliers')||'[]')}
+function setSelected(a){localStorage.setItem('clima_selected_suppliers',JSON.stringify(a))}
+function getQuotes(){return JSON.parse(localStorage.getItem('clima_quotes')||'[]')}
+function setQuotes(a){localStorage.setItem('clima_quotes',JSON.stringify(a))}
+
+function getAllSuppliers(){
+  return [
+    ...baseSuppliers.map(s=>({...s,custom:false})),
+    ...getCustomSuppliers().map(s=>({...s,custom:true}))
+  ];
+}
+
+function updateLastSyncText(){
+  const el=document.getElementById('lastSync');
+  if(el)el.textContent='Ultima sincronizzazione: '+(localStorage.getItem('clima_last_sync')||'mai');
+}
+
+function setSyncStatus(t,ok=true){
+  document.getElementById('syncStatus').textContent=t;
+  document.getElementById('syncDot').style.background=ok?'var(--green)':'var(--red)';
+}
+
+function stateBadge(stato){
+  if(!stato||stato==='Da contattare')return '<span class="badge warn">⚠️ Da contattare</span>';
+  if(stato==='Selezionato')return '<span class="badge ok">🏆 Selezionato</span>';
+  if(stato==='Preventivo ricevuto')return '<span class="badge ok">💰 Preventivo ricevuto</span>';
+  if(stato==='Sopralluogo fissato')return '<span class="badge ok">📅 Sopralluogo fissato</span>';
+  if(stato==='Scartato')return '<span class="badge bad">❌ Scartato</span>';
+  return `<span class="badge ok">✅ ${stato}</span>`;
+}
+
+function normalizeRow(r){
+  return {
+    timestamp:r.Timestamp||r.timestamp||'',
+    nome:r.Nome||r.nome||'',
+    citta:r.Città||r.Citta||r.citta||'',
+    email:r.Email||r.email||'',
+    telefono:r.Telefono||r.telefono||'',
+    stato:r.Stato||r.stato||'',
+    data_ultimo_contatto:r['Data ultimo contatto']||r.data_ultimo_contatto||'',
+    data_sopralluogo:r['Data sopralluogo']||r.data_sopralluogo||'',
+    costo_preventivo:r['Costo preventivo']||r.costo_preventivo||'',
+    marca_proposta:r['Marca proposta']||r.marca_proposta||'',
+    note:r.Note||r.note||'',
+    ranking:r.Ranking||r.ranking||'',
+    sito:r.Sito||r.sito||'',
+    affidabilita:r.Affidabilità||r.Affidabilita||r.affidabilita||''
+  }
+}
+
+function mergeQuotes(local,cloud){
+  const map=new Map();
+  [...local,...cloud].forEach(q=>{
+    if(!q.nome)return;
+    const old=map.get(q.nome);
+    const tOld=new Date(old?.timestamp||0).getTime();
+    const tNew=new Date(q.timestamp||0).getTime();
+    if(!old||tNew>=tOld)map.set(q.nome,q);
+  });
+  return Array.from(map.values());
+}
+
+function ensureSupplierFromQuote(q){
+  const all=getAllSuppliers();
+  if(all.some(s=>s.name===q.nome))return;
+
+  const custom=getCustomSuppliers();
+  custom.push({
+    name:q.nome,
+    city:q.citta||'Importato da cloud',
+    email:q.email||'',
+    phone:q.telefono||'',
+    site:q.sito||'',
+    reliability:q.affidabilita||'Media'
+  });
+  setCustomSuppliers(custom);
+}
+
+async function syncFromCloud(showMsg=false){
+  const url=localStorage.getItem('clima_script_url');
+  if(!url)return;
+
+  setSyncStatus('sync in corso...',true);
+
+  try{
+    const res=await fetch(url,{method:'GET'});
+    const data=await res.json();
+    const cloud=Array.isArray(data)?data.map(normalizeRow):[];
+
+    cloud.forEach(q=>ensureSupplierFromQuote(q));
+
+    const merged=mergeQuotes(getQuotes(),cloud);
+    setQuotes(merged);
+
+    const selected=new Set(getSelected());
+    cloud.forEach(q=>{
+      if(q.nome && (
+        q.costo_preventivo ||
+        q.ranking ||
+        q.marca_proposta ||
+        q.stato==='Preventivo ricevuto' ||
+        q.stato==='Selezionato' ||
+        q.stato==='Mail inviata'
+      )) selected.add(q.nome);
+    });
+    setSelected([...selected]);
+
+    localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));
+    updateLastSyncText();
+    renderAll();
+    setSyncStatus('sync completato',true);
+    if(showMsg)toast('Dati importati da Google Sheet ✅');
+  }catch(e){
+    console.error(e);
+    setSyncStatus('errore sync',false);
+    if(showMsg)toast('Errore sync cloud ❌');
+  }
+}
+
+async function sendToSheet(payload){
+  const url=localStorage.getItem('clima_script_url');
+  if(!url)return;
+
+  try{
+    await fetch(url,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
+    });
+    localStorage.setItem('clima_last_sync',new Date().toLocaleString('it-IT'));
+    updateLastSyncText();
+    setSyncStatus('salvato cloud',true);
+  }catch(e){
+    console.error(e);
+    setSyncStatus('errore cloud',false);
+  }
+}
+
+function addSupplier(){
+  const name=document.getElementById('newName').value.trim();
+  if(!name){alert('Inserisci almeno il nome.');return;}
+
+  if(getAllSuppliers().some(s=>s.name.toLowerCase()===name.toLowerCase())){
+    alert('Fornitore già presente.');
+    return;
+  }
+
+  const custom=getCustomSuppliers();
+  custom.push({
+    name,
+    city:document.getElementById('newCity').value.trim(),
+    email:document.getElementById('newEmail').value.trim(),
+    phone:document.getElementById('newPhone').value.trim(),
+    site:document.getElementById('newSite').value.trim(),
+    reliability:document.getElementById('newReliability').value
+  });
+  setCustomSuppliers(custom);
+
+  selectSupplier(name);
+
+  ['newName','newCity','newEmail','newPhone','newSite'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('newReliability').value='Media';
+
+  renderAll();
+  toast('Fornitore aggiunto ✅');
+}
+
+function deleteSupplier(name){
+  if(!confirm(`Eliminare "${name}"?`))return;
+
+  setCustomSuppliers(getCustomSuppliers().filter(s=>s.name!==name));
+  setQuotes(getQuotes().filter(q=>q.nome!==name));
+  setSelected(getSelected().filter(x=>x!==name));
+
+  renderAll();
+  toast('Fornitore eliminato ✅');
+}
+
+function selectSupplier(name){
+  const selected=new Set(getSelected());
+  selected.add(name);
+  setSelected([...selected]);
+}
+
+function unselectSupplier(name){
+  setSelected(getSelected().filter(x=>x!==name));
+  renderAll();
+}
+
+function openPreventivo(name){
+  selectSupplier(name);
+  renderAll();
+  const all=getSelectedSuppliers();
+  const idx=all.findIndex(s=>s.name===name);
+  showTab('preventivi',document.querySelectorAll('.tab')[3]);
+  setTimeout(()=>document.getElementById(`quote-card-${idx}`)?.scrollIntoView({behavior:'smooth',block:'center'}),100);
+}
+
+function getSelectedSuppliers(){
+  const selected=getSelected();
+  return getAllSuppliers().filter(s=>selected.includes(s.name));
+}
+
+function renderSupplierCard(s, selectedMode=false){
+  const q=getQuotes().find(x=>x.nome===s.name)||{};
+  const gmail=s.email?`https://mail.google.com/mail/?view=cm&fs=1&to=${enc(s.email)}&su=${enc(getSubject())}&body=${enc(getBody())}`:'';
+  const mailto=s.email?`mailto:${s.email}?subject=${enc(getSubject())}&body=${enc(getBody())}`:'';
+  const tel=s.phone?`tel:${cleanPhone(s.phone)}`:'';
+
+  return `
+  <article class="supplier">
+    <div class="head">
+      <div>
+        <h3>${s.name} ${s.custom?'<span class="badge warn">Creato da te</span>':''}</h3>
+        <div class="mut">📍 ${s.city||'Zona non indicata'}</div>
+      </div>
+      ${stateBadge(q.stato)}
+    </div>
+
+    <p class="mini">📧 ${s.email||'—'} · 📞 ${s.phone||'—'}<br>Ultimo contatto: ${q.data_ultimo_contatto||'—'}</p>
+
+    <div class="row">
+      ${gmail?`<a class="btn gold" target="_blank" href="${gmail}">Gmail</a>`:''}
+      ${mailto?`<a class="btn blue" href="${mailto}">Mail</a>`:''}
+      ${tel?`<a class="btn" href="${tel}">Chiama</a>`:''}
+      ${s.site?`<a class="btn" target="_blank" href="${s.site}">Sito</a>`:''}
+      <button class="btn green" onclick="openPreventivo('${String(s.name).replace(/'/g,"\\'")}')">Preventivo</button>
+      ${selectedMode
+        ? `<button class="btn red" onclick="unselectSupplier('${String(s.name).replace(/'/g,"\\'")}')">Rimuovi selezione</button>`
+        : `<button class="btn blue" onclick="selectSupplier('${String(s.name).replace(/'/g,"\\'")}');renderAll();toast('Fornitore selezionato ⭐')">Seleziona</button>`
+      }
+      ${s.custom?`<button class="btn red" onclick="deleteSupplier('${String(s.name).replace(/'/g,"\\'")}')">Elimina</button>`:''}
+    </div>
+  </article>`;
+}
+
+function renderAllSuppliers(){
+  const q=document.getElementById('qAll')?.value.toLowerCase().trim()||'';
+  const f=document.getElementById('filterAll')?.value||'all';
+  const selected=getSelected();
+  const box=document.getElementById('allSupplierList');
+  box.innerHTML='';
+
+  getAllSuppliers().filter(s=>{
+    const text=`${s.name} ${s.city} ${s.email} ${s.phone}`.toLowerCase();
+    if(q&&!text.includes(q))return false;
+    if(f==='selected'&&!selected.includes(s.name))return false;
+    if(f==='custom'&&!s.custom)return false;
+    if(f==='email'&&!s.email)return false;
+    return true;
+  }).forEach(s=>box.insertAdjacentHTML('beforeend',renderSupplierCard(s,false)));
+}
+
+function renderSelectedSuppliers(){
+  const box=document.getElementById('selectedSupplierList');
+  const arr=getSelectedSuppliers();
+  box.innerHTML=arr.length
+    ? arr.map(s=>renderSupplierCard(s,true)).join('')
+    : '<p class="mut">Nessun fornitore selezionato.</p>';
+}
+
+function markDirty(i){
+  dirtyQuotes.add(i);
+  const card=document.getElementById(`quote-box-${i}`);
+  const status=document.getElementById(`save-status-${i}`);
+  if(card)card.classList.add('dirty');
+  if(status)status.innerHTML='<span class="badge warn">● Modifiche non salvate</span>';
+}
+
+function chosenOptionData(i){
+  const chosen=document.getElementById(`chosen-${i}`)?.value||'top';
+
+  const map={
+    top:['topBrand','topPrice'],
+    mid:['midBrand','midPrice'],
+    low:['lowBrand','lowPrice']
+  };
+
+  const [brandId,priceId]=map[chosen]||map.top;
+
+  return {
+    marca:document.getElementById(`${brandId}-${i}`)?.value||'',
+    prezzo:document.getElementById(`${priceId}-${i}`)?.value||''
+  };
+}
+
+function buildPayload(i){
+  const s=getSelectedSuppliers()[i];
+  const chosen=chosenOptionData(i);
+
+  const optionsSummary=[
+    document.getElementById(`topBrand-${i}`)?.value || document.getElementById(`topPrice-${i}`)?.value
+      ? `Top: ${document.getElementById(`topBrand-${i}`).value || '-'} € ${document.getElementById(`topPrice-${i}`).value || '-'}`
+      : '',
+    document.getElementById(`midBrand-${i}`)?.value || document.getElementById(`midPrice-${i}`)?.value
+      ? `Media: ${document.getElementById(`midBrand-${i}`).value || '-'} € ${document.getElementById(`midPrice-${i}`).value || '-'}`
+      : '',
+    document.getElementById(`lowBrand-${i}`)?.value || document.getElementById(`lowPrice-${i}`)?.value
+      ? `Alternativa: ${document.getElementById(`lowBrand-${i}`).value || '-'} € ${document.getElementById(`lowPrice-${i}`).value || '-'}`
+      : ''
+  ].filter(Boolean).join(' | ');
+
+  const note=document.getElementById(`note-${i}`)?.value||'';
+
+  return {
+    timestamp:new Date().toISOString(),
+    nome:s.name,
+    citta:s.city,
+    email:s.email,
+    telefono:s.phone,
+    sito:s.site,
+    affidabilita:s.reliability,
+    stato:document.getElementById(`stato-${i}`)?.value||'',
+    data_ultimo_contatto:document.getElementById(`ultimo-${i}`)?.value||'',
+    data_sopralluogo:document.getElementById(`sopralluogo-${i}`)?.value||'',
+    costo_preventivo:chosen.prezzo,
+    marca_proposta:chosen.marca,
+    note:optionsSummary ? `${note}${note?' | ':''}${optionsSummary}` : note,
+    ranking:document.getElementById(`ranking-${i}`)?.value||''
+  };
+}
+
+function saveQuote(i){
+  const payload=buildPayload(i);
+  const arr=getQuotes();
+  const idx=arr.findIndex(q=>q.nome===payload.nome);
+  idx>=0?arr[idx]=payload:arr.push(payload);
+  setQuotes(arr);
+  sendToSheet(payload);
+  dirtyQuotes.delete(i);
+  renderAll();
+  toast('Preventivo salvato ✅');
+}
+
+function renderQuotesEditor(){
+  const box=document.getElementById('quotesEditor');
+  const selected=getSelectedSuppliers();
+  const quotes=getQuotes();
+
+  box.innerHTML='';
+
+  if(!selected.length){
+    box.innerHTML='<p class="mut">Nessun fornitore selezionato. Vai su “Tutti” o “Selezionati”.</p>';
+    return;
+  }
+
+  selected.forEach((s,i)=>{
+    const saved=quotes.find(q=>q.nome===s.name)||{};
+
+    box.insertAdjacentHTML('beforeend',`
+      <article class="supplier" id="quote-box-${i}">
+        <div class="head">
+          <div>
+            <h3>${s.name}</h3>
+            <div class="mut">${s.city||'Zona non indicata'}</div>
+          </div>
+          <div id="save-status-${i}">${stateBadge(saved.stato)}</div>
+        </div>
+
+        <div class="formgrid" id="quote-card-${i}">
+          <select id="stato-${i}" onchange="markDirty(${i})">
+            <option>Da contattare</option>
+            <option>Mail inviata</option>
+            <option>Risposto</option>
+            <option>Sopralluogo fissato</option>
+            <option>Preventivo ricevuto</option>
+            <option>Scartato</option>
+            <option>Selezionato</option>
+          </select>
+
+          <input id="ultimo-${i}" type="date" value="${saved.data_ultimo_contatto||''}" onchange="markDirty(${i})">
+          <input id="sopralluogo-${i}" type="date" value="${saved.data_sopralluogo||''}" onchange="markDirty(${i})">
+
+          <select id="chosen-${i}" onchange="markDirty(${i})">
+            <option value="top">Usa opzione TOP</option>
+            <option value="mid">Usa opzione MEDIA</option>
+            <option value="low">Usa opzione ALTERNATIVA</option>
+          </select>
+
+          <select id="ranking-${i}" onchange="markDirty(${i})">
+            <option value="">Ranking</option>
+            <option value="5">⭐⭐⭐⭐⭐ Ottimo</option>
+            <option value="4">⭐⭐⭐⭐ Buono</option>
+            <option value="3">⭐⭐⭐ Medio</option>
+            <option value="2">⭐⭐ Scarso</option>
+            <option value="1">⭐ Bocciato</option>
+          </select>
+
+          <input id="topBrand-${i}" placeholder="Opzione TOP - marca/modello" value="${saved.marca_proposta||''}" oninput="markDirty(${i})">
+          <input id="topPrice-${i}" type="number" placeholder="Prezzo TOP" value="${saved.costo_preventivo||''}" oninput="markDirty(${i})">
+
+          <input id="midBrand-${i}" placeholder="Opzione MEDIA - marca/modello" oninput="markDirty(${i})">
+          <input id="midPrice-${i}" type="number" placeholder="Prezzo MEDIA" oninput="markDirty(${i})">
+
+          <input id="lowBrand-${i}" placeholder="Opzione ALTERNATIVA - marca/modello" oninput="markDirty(${i})">
+          <input id="lowPrice-${i}" type="number" placeholder="Prezzo ALTERNATIVA" oninput="markDirty(${i})">
+
+          <input class="full" id="note-${i}" placeholder="Note / IVA / esclusioni / garanzia" value="${saved.note||''}" oninput="markDirty(${i})">
+        </div>
+
+        <div class="row">
+          <button class="btn green" onclick="saveQuote(${i})">💾 Salva modifiche</button>
+        </div>
+      </article>
+    `);
+
+    if(saved.stato)document.getElementById(`stato-${i}`).value=saved.stato;
+    if(saved.ranking)document.getElementById(`ranking-${i}`).value=saved.ranking;
+  });
+}
+
+function renderComparison(){
+  const selected=getSelected();
+  const box=document.getElementById('comparisonBox');
+
+  const q=getQuotes()
+    .filter(x=>selected.includes(x.nome))
+    .filter(x =>
+      x.costo_preventivo ||
+      x.ranking ||
+      x.marca_proposta ||
+      x.stato==='Preventivo ricevuto' ||
+      x.stato==='Selezionato'
+    )
+    .sort((a,b)=>
+      Number(b.ranking||0)-Number(a.ranking||0) ||
+      Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999)
+    );
+
+  if(!q.length){
+    box.innerHTML='<p class="mut">Nessun preventivo salvato.</p>';
+    return;
+  }
+
+  box.innerHTML=`
+  <div class="tablewrap">
+  <table>
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Fornitore</th>
+    <th class="choice-col">Scelta</th>
+    <th class="cost-col">Costo</th>
+    <th class="rank-col">Ranking</th>
+    <th>Ultimo contatto</th>
+    <th>Sopralluogo</th>
+    <th class="status-col">Stato</th>
+    <th class="notes-col">Note</th>
+  </tr>
+  </thead>
+  <tbody>
+  ${q.map((x,i)=>`
+    <tr>
+      <td>${i+1}</td>
+
+      <td><b>${x.nome}</b></td>
+
+      <td class="choice-col">${x.marca_proposta||'-'}</td>
+
+      <td class="cost-col">
+        ${
+          x.costo_preventivo
+            ? `<span class="mobile-price">€ ${Number(x.costo_preventivo).toLocaleString('it-IT')}</span><span class="iva-note">IVA escl.</span>`
+            : '-'
+        }
+      </td>
+
+      <td class="rank-col">${x.ranking?'⭐'.repeat(Number(x.ranking)):'-'}</td>
+      <td>${x.data_ultimo_contatto||'-'}</td>
+      <td>${x.data_sopralluogo||'-'}</td>
+      <td class="status-col">${x.stato||'-'}</td>
+      <td class="notes-col">${x.note||'-'}</td>
+    </tr>
+  `).join('')}
+  </tbody>
+  </table>
+  </div>`;
+}
+
+function renderDashboard(){
+  const all=getAllSuppliers();
+  const selected=getSelected();
+  const q=getQuotes().filter(x=>selected.includes(x.nome));
+
+  document.getElementById('kFornitori').textContent=all.length;
+  document.getElementById('kSelected').textContent=selected.length;
+
+  const prices=q.map(x=>Number(x.costo_preventivo)).filter(Boolean);
+  document.getElementById('kPrezzo').textContent=prices.length?'€ '+Math.min(...prices).toLocaleString('it-IT'):'-';
+
+  const best=q
+    .filter(x=>x.costo_preventivo||x.ranking||x.marca_proposta)
+    .sort((a,b)=>Number(b.ranking||0)-Number(a.ranking||0)||Number(a.costo_preventivo||999999)-Number(b.costo_preventivo||999999))
+    .slice(0,3);
+
+  document.getElementById('dashBest').innerHTML=best.length
+    ? best.map((x,i)=>`<div class="supplier"><b>${i+1}. ${x.nome}</b><br><span class="mut">${x.marca_proposta||'-'} · ${x.costo_preventivo?'€ '+Number(x.costo_preventivo).toLocaleString('it-IT'):'prezzo mancante'} · ${x.ranking?'⭐'.repeat(Number(x.ranking)):'ranking mancante'}</span></div>`).join('')
+    : '<p class="mut">Nessun dato ancora.</p>';
+
+  const today=new Date();
+  const alerts=q
+    .filter(x=>x.stato==='Mail inviata'&&x.data_ultimo_contatto)
+    .map(x=>({...x,days:Math.floor((today-new Date(x.data_ultimo_contatto))/(1000*60*60*24))}))
+    .filter(x=>x.days>=5);
+
+  document.getElementById('followUps').innerHTML=alerts.length
+    ? alerts.map(x=>`<div class="supplier"><b>${x.nome}</b><br><span class="mut">Mail inviata da ${x.days} giorni: sollecito consigliato.</span></div>`).join('')
+    : '<p class="mut">Nessun follow-up urgente.</p>';
+}
+
+function renderAll(){
+  renderAllSuppliers();
+  renderSelectedSuppliers();
+  renderQuotesEditor();
+  renderComparison();
+  renderDashboard();
+}
+
+function copyEmail(){
+  navigator.clipboard.writeText(getBody());
+  toast('Email copiata ✅');
+}
+
+function downloadCsv(){
+  let csv='Nome;Citta;Email;Telefono;Sito;Affidabilita;Selezionato\n';
+  const selected=getSelected();
+
+  getAllSuppliers().forEach(s=>{
+    csv+=[s.name,s.city,s.email,s.phone,s.site,s.reliability,selected.includes(s.name)?'Sì':'No']
+      .map(v=>`"${String(v||'').replace(/"/g,'""')}"`)
+      .join(';')+'\n';
+  });
+
+  downloadFile(csv,'clima-rush-contatti.csv','text/csv');
+}
+
+function downloadFile(content,name,type){
+  const b=new Blob([content],{type});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download=name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function saveConfig(){
+  localStorage.setItem('clima_script_url',document.getElementById('scriptUrl').value.trim());
+  toast('URL salvato ✅');
+  syncFromCloud(true);
+}
+
+function clearConfig(){
+  localStorage.removeItem('clima_script_url');
+  document.getElementById('scriptUrl').value='';
+  toast('URL rimosso ✅');
+}
+
+function testSheet(){
+  sendToSheet({nome:'TEST CLIMA RUSH',stato:'Test collegamento',timestamp:new Date().toISOString()});
+  toast('Test inviato ✅');
+}
+
+function exportJson(){
+  downloadFile(JSON.stringify({
+    quotes:getQuotes(),
+    customSuppliers:getCustomSuppliers(),
+    selected:getSelected()
+  },null,2),'clima-rush-backup.json','application/json');
+}
+
+function importJson(e){
+  const f=e.target.files[0];
+  if(!f)return;
+
+  const r=new FileReader();
+  r.onload=()=>{
+    const d=JSON.parse(r.result);
+    if(d.quotes)setQuotes(d.quotes);
+    if(d.customSuppliers)setCustomSuppliers(d.customSuppliers);
+    if(d.selected)setSelected(d.selected);
+    renderAll();
+    toast('Backup importato ✅');
+  };
+  r.readAsText(f);
+}
+
+function clearQuotes(){
+  if(confirm('Cancellare storico preventivi locale?')){
+    localStorage.removeItem('clima_quotes');
+    renderAll();
+    toast('Storico cancellato ✅');
+  }
+}
+
+document.getElementById('scriptUrl').value=localStorage.getItem('clima_script_url')||'';
+updateLastSyncText();
+renderAll();
+syncFromCloud(false);
+</script>
+</body>
+</html>
